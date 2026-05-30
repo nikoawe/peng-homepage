@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>彭禹诺 — 个人主页</title>
+    <title>彭禹诺 — 贵阳市第三实验中学</title>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
             font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
-            background: #0d0d14;
-            color: #ddd;
+            background: #0a0a12;
+            color: #d0d0d0;
             line-height: 1.8;
         }
         a { color: inherit; text-decoration: none; }
@@ -22,63 +22,95 @@
             display: flex; justify-content: space-between; align-items: center;
             transition: all .3s;
         }
-        .nav.scrolled { background: rgba(13,13,20,.94); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(255,255,255,.04); }
-        .nav .logo { font-size: 1.2rem; font-weight: 800; color: #00e676; letter-spacing: 2px; }
-        .nav-links { display: flex; gap: 24px; list-style: none; }
-        .nav-links a { color: #888; font-size: .85rem; letter-spacing: 1px; transition: .3s; }
+        .nav.scrolled { background: rgba(10,10,18,.94); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(255,255,255,.04); }
+        .nav .logo { font-size: 1.1rem; font-weight: 800; color: #00e676; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 22px; list-style: none; }
+        .nav-links a { color: #888; font-size: .84rem; letter-spacing: 1px; transition: .3s; }
         .nav-links a:hover { color: #00e676; }
 
         /* Hero */
         .hero {
             min-height: 100vh;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; position: relative; padding: 20px;
-            background: radial-gradient(ellipse at center, rgba(0,230,118,.06) 0%, transparent 70%);
+            text-align: center; padding: 20px;
+            background: radial-gradient(ellipse at center, rgba(0,230,118,.05) 0%, transparent 70%);
         }
-        .hero .glitch {
-            font-size: 3.5rem; font-weight: 900; letter-spacing: 4px;
-            color: #fff;
-            text-shadow: 0 0 40px rgba(0,230,118,.4), 0 0 80px rgba(0,230,118,.15);
+        .hero .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid rgba(0,230,118,.3);
+            border-radius: 20px;
+            font-size: .78rem;
+            color: #00e676;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
-        .hero .tag {
-            font-size: 1.1rem; color: #666; margin-top: 10px; letter-spacing: 2px;
+        .hero h1 {
+            font-size: 3.2rem; font-weight: 900; letter-spacing: 4px;
+            background: linear-gradient(135deg, #fff 30%, #00e676);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        .hero .sub { font-size: 1.05rem; color: #666; letter-spacing: 2px; margin-bottom: 28px; }
+        .hero .tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .hero .tags span {
+            padding: 5px 14px;
+            background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 16px;
+            font-size: .78rem;
+            color: #999;
         }
         .hero .arrow { position: absolute; bottom: 50px; color: #444; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%,100% { transform: translateY(0); opacity: .3; } 50% { transform: translateY(8px); opacity: 1; } }
 
-        @keyframes bounce { 0%,100% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(8px); opacity: 1; } }
+        /* Sections */
+        .section { max-width: 860px; margin: 0 auto; padding: 80px 20px; }
+        .sec-tag { font-size: .72rem; text-transform: uppercase; letter-spacing: 4px; color: #00e676; margin-bottom: 6px; }
+        .sec-title { font-size: 1.7rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 6px; color: #fff; }
+        .sec-sub { font-size: .88rem; color: #555; margin-bottom: 30px; }
+        .sec-text { color: #aaa; font-size: .96rem; line-height: 2; }
 
-        /* Section */
-        .section { max-width: 800px; margin: 0 auto; padding: 80px 20px; }
-        .sec-tag { font-size: .75rem; text-transform: uppercase; letter-spacing: 3px; color: #00e676; margin-bottom: 6px; }
-        .sec-title { font-size: 1.8rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 32px; color: #fff; }
-        .sec-text { color: #999; font-size: .98rem; line-height: 2; }
+        /* Awards Table */
+        .award-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        .award-table th {
+            text-align: left; padding: 10px 14px;
+            background: rgba(0,230,118,.06);
+            color: #00e676;
+            font-size: .8rem; letter-spacing: 2px;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        .award-table td {
+            padding: 10px 14px;
+            font-size: .9rem; color: #bbb;
+            border-bottom: 1px solid rgba(255,255,255,.03);
+        }
+        .award-table tr:hover td { background: rgba(255,255,255,.015); }
+        .award-table .gold { color: #ffd700; }
+        .award-table .silver { color: #b0bec5; }
+        .award-table .bronze { color: #ff8a65; }
 
         /* Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
         .card {
-            background: rgba(255,255,255,.025);
+            background: rgba(255,255,255,.02);
             border: 1px solid rgba(255,255,255,.05);
-            border-radius: 14px; padding: 24px 18px;
-            transition: all .35s;
+            border-radius: 14px; padding: 22px 18px;
+            transition: all .35s; text-align: center;
         }
         .card:hover {
             background: rgba(0,230,118,.04);
-            border-color: rgba(0,230,118,.2);
+            border-color: rgba(0,230,118,.18);
             transform: translateY(-3px);
         }
-        .card .icon { font-size: 2rem; margin-bottom: 10px; }
-        .card h4 { font-size: 1rem; margin-bottom: 6px; color: #eee; }
-        .card p { font-size: .82rem; color: #777; }
-
-        /* Skill bars */
-        .skill-row { display: flex; align-items: center; margin-bottom: 14px; gap: 14px; }
-        .skill-row .label { width: 110px; font-size: .85rem; color: #aaa; text-align: right; flex-shrink: 0; }
-        .skill-row .bar-bg { flex: 1; height: 5px; background: rgba(255,255,255,.05); border-radius: 3px; overflow: hidden; }
-        .skill-row .bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #00e676, #00bcd4); }
+        .card .icon { font-size: 2.2rem; margin-bottom: 10px; }
+        .card h4 { font-size: .95rem; margin-bottom: 6px; color: #eee; }
+        .card p { font-size: .8rem; color: #777; }
 
         /* Timeline */
         .tl { border-left: 1px solid rgba(255,255,255,.08); padding-left: 26px; margin-left: 8px; }
-        .tl-item { position: relative; margin-bottom: 24px; }
+        .tl-item { position: relative; margin-bottom: 22px; }
         .tl-item::before {
             content: ""; position: absolute; left: -30px; top: 6px;
             width: 8px; height: 8px; background: #00e676; border-radius: 50%;
@@ -88,20 +120,23 @@
         .tl-item h4 { font-size: .95rem; margin: 2px 0 4px; }
         .tl-item p { font-size: .82rem; color: #888; }
 
-        /* Stat numbers */
-        .stats { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 24px; }
-        .stat { text-align: center; min-width: 90px; }
-        .stat .big { font-size: 2rem; font-weight: 900; color: #00e676; }
-        .stat .lbl { font-size: .75rem; color: #666; margin-top: 2px; }
+        /* Contact */
+        .contact-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .contact-btn {
+            display: inline-block; padding: 10px 20px;
+            border: 1px solid rgba(255,255,255,.1); border-radius: 24px;
+            color: #aaa; font-size: .85rem; transition: .3s;
+        }
+        .contact-btn:hover { border-color: #00e676; color: #00e676; background: rgba(0,230,118,.05); }
 
         /* Footer */
-        .ft { text-align: center; padding: 40px 20px; color: #444; font-size: .78rem; border-top: 1px solid rgba(255,255,255,.03); }
+        .ft { text-align: center; padding: 40px 20px; color: #444; font-size: .76rem; border-top: 1px solid rgba(255,255,255,.03); }
 
         @media (max-width: 600px) {
-            .hero .glitch { font-size: 2rem; }
+            .hero h1 { font-size: 2rem; }
             .nav { padding: 10px 14px; }
-            .nav-links { gap: 12px; }
-            .nav-links a { font-size: .75rem; }
+            .nav-links { gap: 10px; }
+            .nav-links a { font-size: .73rem; }
             .section { padding: 50px 14px; }
         }
     </style>
@@ -109,231 +144,215 @@
 <body>
 
 <nav class="nav" id="nav">
-    <div class="logo">PENG</div>
+    <div class="logo">PYN</div>
     <ul class="nav-links">
         <li><a href="#about">关于</a></li>
-        <li><a href="#setup">装备</a></li>
+        <li><a href="#awards">获奖</a></li>
         <li><a href="#skills">技能</a></li>
-        <li><a href="#games">游戏</a></li>
+        <li><a href="#role">学生工作</a></li>
         <li><a href="#contact">联系</a></li>
     </ul>
 </nav>
 
-<!-- Hero -->
+<!-- ===== Hero ===== -->
 <section class="hero" id="home">
-    <h1 class="glitch">彭禹诺</h1>
-    <p class="tag">Gamer · Builder · Tech Explorer</p>
-    <div class="stats">
-        <div class="stat"><div class="big">Steam</div><div class="lbl">主力平台</div></div>
-        <div class="stat"><div class="big">NVIDIA</div><div class="lbl">图形之心</div></div>
-        <div class="stat"><div class="big">Logitech</div><div class="lbl">游戏外设</div></div>
+    <div class="badge">🏫 贵阳市第三实验中学</div>
+    <h1>彭禹诺</h1>
+    <p class="sub">信息学竞赛选手 · 学生干部 · 乒乓少女</p>
+    <div class="tags">
+        <span>💻 信息学奥赛</span>
+        <span>🏓 乒乓球</span>
+        <span>🤖 AI 大赛</span>
+        <span>✍️ 书法</span>
+        <span>📋 学生会</span>
+        <span>🎮 游戏玩家</span>
     </div>
     <div class="arrow">▼ SCROLL</div>
 </section>
 
-<!-- About -->
+<!-- ===== About ===== -->
 <section class="section" id="about">
     <div class="sec-tag">ABOUT</div>
     <h2 class="sec-title">关于我</h2>
     <p class="sec-text">
-        我是彭禹诺，一个热爱游戏与科技的玩家。从 CS:GO 的精准枪法到 Minecraft 的无限创造，
-        从 Steam 的单机大作到多人在线竞技——游戏是我生活中不可或缺的一部分。
+        我是<strong style="color:#eee;">彭禹诺</strong>，贵阳市第三实验中学学生。
+        一名在代码、运动与书法之间寻找平衡的高中生。
     </p>
     <p class="sec-text" style="margin-top:14px;">
-        除了游戏，我也对编程和技术充满好奇。平时会用 Python 写点小工具，
-        最近在学前端开发，想把自己的想法变成看得见的作品。
-        Claude Code 是我的编程搭子，帮了不少忙。
+        从小学获得<strong style="color:#ffd700;">汉字书法大赛一等奖</strong>开始，到中学征战<strong style="color:#00e676;">信息学奥林匹克竞赛（CSP-J/S）</strong>和<strong style="color:#ff8a65;">ICPC 贵州省赛</strong>，
+        再到<strong style="color:#00bcd4;">青少年人工智能大赛</strong>和<strong style="color:#eee;">信息素养比赛</strong>——
+        一路走来，每一次比赛都是一次成长。
     </p>
     <p class="sec-text" style="margin-top:14px;">
-        用的是 NVIDIA 显卡 + Logitech 外设，对设备手感有要求。
-        日常混迹 QQ / 微信，360 浏览器重度用户😄。
+        竞赛之外，我也是<strong style="color:#00e676;">校学生自主管理委员会秘书长兼监督部部长</strong>，
+        2025 年获评<strong style="color:#eee;">优秀学生干部</strong>。
+        喜欢打乒乓球，曾在<strong style="color:#00bcd4;">贵阳市国球进社区乒乓球联赛 13~16 岁组</strong>中获得名次。
+        课余时间热爱游戏——Steam、CS、Minecraft 都是我的地盘。
     </p>
 </section>
 
-<!-- Setup -->
-<section class="section" id="setup">
-    <div class="sec-tag">MY GEAR</div>
-    <h2 class="sec-title">我的装备</h2>
+<!-- ===== Awards ===== -->
+<section class="section" id="awards">
+    <div class="sec-tag">HONORS & AWARDS</div>
+    <h2 class="sec-title">获奖经历</h2>
+    <div class="sec-sub">🏅 每一份荣誉，都是努力的见证</div>
+
+    <!-- 信息学竞赛 -->
+    <h4 style="color:#00e676;margin-bottom:10px;margin-top:24px;letter-spacing:1px;">💻 信息学竞赛</h4>
+    <table class="award-table">
+        <thead>
+            <tr><th>年份</th><th>比赛</th><th>获奖</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>2024</td><td>ICPC 贵州省赛 · 中学组</td><td class="bronze">🥉 铜奖</td></tr>
+            <tr><td>2024</td><td>CSP-J 初赛</td><td>三等奖</td></tr>
+            <tr><td>2024</td><td>CSP-S 初赛</td><td>三等奖</td></tr>
+            <tr><td>2024</td><td>CSP-J 复赛</td><td class="silver">🥈 二等奖</td></tr>
+            <tr><td>2024</td><td>CSP-S 复赛</td><td class="silver">🥈 二等奖</td></tr>
+            <tr><td>2025</td><td>CSP 初赛</td><td class="gold">一等奖 / 二等奖 / 三等奖</td></tr>
+        </tbody>
+    </table>
+
+    <!-- AI & 科创 -->
+    <h4 style="color:#00bcd4;margin-bottom:10px;margin-top:28px;letter-spacing:1px;">🤖 人工智能 & 信息素养</h4>
+    <table class="award-table">
+        <thead>
+            <tr><th>年份</th><th>比赛</th><th>获奖</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>—</td><td>青少年人工智能大赛 · 初赛</td><td class="gold">🥇 一等奖</td></tr>
+            <tr><td>2024</td><td>贵州省师生信息素养比赛 · 贵阳市</td><td class="silver">🥈 二等奖</td></tr>
+            <tr><td>2026</td><td>信息素养比赛 · 市级</td><td class="silver">🥈 二等奖</td></tr>
+        </tbody>
+    </table>
+
+    <!-- 综合 -->
+    <h4 style="color:#ffd700;margin-bottom:10px;margin-top:28px;letter-spacing:1px;">🌟 其他荣誉</h4>
+    <table class="award-table">
+        <thead>
+            <tr><th>年份</th><th>荣誉</th><th>级别</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>小学</td><td>汉字书法大赛</td><td class="gold">🥇 一等奖</td></tr>
+            <tr><td>2023</td><td>贵阳市第三届国球进社区乒乓球联赛（13~16 岁组）</td><td>女子组名次</td></tr>
+            <tr><td>2025</td><td>优秀学生干部</td><td>校级</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- ===== Skills ===== -->
+<section class="section" id="skills">
+    <div class="sec-tag">SKILLS</div>
+    <h2 class="sec-title">技能 & 特长</h2>
     <div class="grid">
         <div class="card">
-            <div class="icon">🖥️</div>
-            <h4>NVIDIA GPU</h4>
-            <p>DLSS、Reflex、Game Ready 驱动 — 帧率即正义。</p>
+            <div class="icon">💻</div>
+            <h4>C++ / 算法</h4>
+            <p>CSP-J/S 竞赛训练，数据结构与算法基础扎实。</p>
         </div>
         <div class="card">
-            <div class="icon">🎮</div>
-            <h4>Logitech G 系列</h4>
-            <p>G HUB 调校，手感与精准的平衡。</p>
-        </div>
-        <div class="card">
-            <div class="icon">⌨️</div>
-            <h4>搜狗输入法</h4>
-            <p>打字不累，中文输入效率拉满。</p>
+            <div class="icon">🐍</div>
+            <h4>Python</h4>
+            <p>人工智能大赛主力语言，也用来写工具脚本。</p>
         </div>
         <div class="card">
             <div class="icon">🌐</div>
-            <h4>360 浏览器</h4>
-            <p>日常上网主力，兼容性与速度兼顾。</p>
+            <h4>前端开发</h4>
+            <p>HTML / CSS 入门，能用 Claude Code 辅助做网页。</p>
+        </div>
+        <div class="card">
+            <div class="icon">🏓</div>
+            <h4>乒乓球</h4>
+            <p>市级联赛经验，速度快、反应准。</p>
+        </div>
+        <div class="card">
+            <div class="icon">✍️</div>
+            <h4>书法</h4>
+            <p>小学获市级一等奖，练就一手好字。</p>
+        </div>
+        <div class="card">
+            <div class="icon">📋</div>
+            <h4>组织管理</h4>
+            <p>秘书长 + 监督部部长，善于协调与沟通。</p>
         </div>
     </div>
 </section>
 
-<!-- Skills -->
-<section class="section" id="skills">
-    <div class="sec-tag">SKILLS</div>
-    <h2 class="sec-title">技能树</h2>
-
-    <div class="skill-row"><span class="label">游戏理解</span><div class="bar-bg"><div class="bar" style="width: 95%"></div></div></div>
-    <div class="skill-row"><span class="label">Python</span><div class="bar-bg"><div class="bar" style="width: 55%"></div></div></div>
-    <div class="skill-row"><span class="label">HTML / CSS</span><div class="bar-bg"><div class="bar" style="width: 60%"></div></div></div>
-    <div class="skill-row"><span class="label">Git & GitHub</span><div class="bar-bg"><div class="bar" style="width: 65%"></div></div></div>
-    <div class="skill-row"><span class="label">Claude Code</span><div class="bar-bg"><div class="bar" style="width: 80%"></div></div></div>
-    <div class="skill-row"><span class="label">电脑清理😆</span><div class="bar-bg"><div class="bar" style="width: 90%"></div></div></div>
-
-    <div class="grid" style="margin-top: 36px;">
-        <div class="card">
-            <div class="icon">🐍</div>
-            <h4>Python 脚本</h4>
-            <p>写过一些小工具和自动化脚本，用 xigua-python 练手。</p>
-        </div>
-        <div class="card">
-            <div class="icon">🎨</div>
-            <h4>前端入门</h4>
-            <p>会用 Claude Code 辅助写网页，就像你现在看到的这个。</p>
-        </div>
-        <div class="card">
-            <div class="icon">🔧</div>
-            <h4>系统调校</h4>
-            <p>C 盘清理大师，NVIDIA 控制面板玩家。</p>
-        </div>
-        <div class="card">
-            <div class="icon">🤖</div>
-            <h4>AI 工具</h4>
-            <p>Claude Code + DeepSeek 重度用户，AI 辅助开发效率翻倍。</p>
-        </div>
-    </div>
+<!-- ===== 学生工作 ===== -->
+<section class="section" id="role">
+    <div class="sec-tag">LEADERSHIP</div>
+    <h2 class="sec-title">学生工作</h2>
+    <p class="sec-text">
+        担任<strong style="color:#00e676;">校学生自主管理委员会秘书长</strong>兼<strong style="color:#00e676;">监督部部长</strong>，
+        负责统筹学生自治事务，协调各部门工作。2025 年获评<strong style="color:#eee;">"优秀学生干部"</strong>。
+    </p>
+    <p class="sec-text" style="margin-top:14px;">
+        在学生工作中锻炼了沟通协调能力、团队管理能力和责任意识——
+        这些软技能和编程硬实力一样重要。
+    </p>
 </section>
 
-<!-- Games -->
-<section class="section" id="games">
-    <div class="sec-tag">GAMES</div>
-    <h2 class="sec-title">游戏世界</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="icon">🔫</div>
-            <h4>CS:GO / CS2</h4>
-            <p>5E 对战平台常客，枪法与意识的修炼场。</p>
-        </div>
-        <div class="card">
-            <div class="icon">⛏️</div>
-            <h4>Minecraft</h4>
-            <p>网易版玩家，创造与生存的无限世界。</p>
-        </div>
-        <div class="card">
-            <div class="icon">🏰</div>
-            <h4>Epic Games</h4>
-            <p>免费游戏收藏家，偶尔也认真玩玩。</p>
-        </div>
-        <div class="card">
-            <div class="icon">🗡️</div>
-            <h4>Ubisoft</h4>
-            <p>刺客信条、彩虹六号…育碧全家桶。</p>
-        </div>
-        <div class="card">
-            <div class="icon">🚗</div>
-            <h4>Rockstar Games</h4>
-            <p>GTA、荒野大镖客 — 开放世界爱好者。</p>
-        </div>
-        <div class="card">
-            <div class="icon">⚔️</div>
-            <h4>完美世界竞技</h4>
-            <p>国风竞技，不一样的战斗体验。</p>
-        </div>
-        <div class="card">
-            <div class="icon">🎯</div>
-            <h4>EA</h4>
-            <p>战地、FIFA…枪车球都沾点。</p>
-        </div>
-        <div class="card">
-            <div class="icon">📦</div>
-            <h4>Steam 库存</h4>
-            <p>游戏库深度玩家，买游戏也是一种游戏。</p>
-        </div>
-    </div>
-</section>
-
-<!-- Timeline -->
+<!-- ===== Timeline ===== -->
 <section class="section" id="timeline">
-    <div class="sec-tag">TIMELINE</div>
-    <h2 class="sec-title">成长足迹</h2>
+    <div class="sec-tag">JOURNEY</div>
+    <h2 class="sec-title">成长之路</h2>
     <div class="tl">
         <div class="tl-item">
-            <div class="yr">早些年</div>
-            <h4>游戏入门</h4>
-            <p>从 Minecraft 和 CS 开始接触游戏世界，一发不可收拾。</p>
+            <div class="yr">小学</div>
+            <h4>书法起步</h4>
+            <p>获得汉字书法大赛一等奖，奠定了对"写好字"的追求。</p>
         </div>
         <div class="tl-item">
             <div class="yr">2021</div>
-            <h4>开始学编程</h4>
-            <p>接触 Python，用小工具解决日常问题。</p>
+            <h4>接触编程</h4>
+            <p>从 Python 入门，打开信息学的大门。</p>
+        </div>
+        <div class="tl-item">
+            <div class="yr">2023</div>
+            <h4>乒乓球 · 市级联赛</h4>
+            <p>参加贵阳市国球进社区乒乓球联赛，在竞技中磨练意志。</p>
         </div>
         <div class="tl-item">
             <div class="yr">2024</div>
-            <h4>配备 NVIDIA + Logitech</h4>
-            <p>升级装备，游戏体验质的飞跃。</p>
+            <h4>信息学竞赛爆发</h4>
+            <p>ICPC 铜奖 + CSP-J/S 双料二等奖，算法能力快速提升。</p>
         </div>
         <div class="tl-item">
             <div class="yr">2025</div>
-            <h4>AI 辅助开发</h4>
-            <p>开始用 Claude Code，编程效率大提升。</p>
+            <h4>全面开花</h4>
+            <p>CSP 一等奖、AI 大赛一等奖、优秀学生干部——赛场与校园双丰收。</p>
         </div>
         <div class="tl-item">
-            <div class="yr">2026 · 现在</div>
-            <h4>持续进化中</h4>
-            <p>学前端，做网页，探索更多创造的可能性。</p>
+            <div class="yr">2026</div>
+            <h4>持续前进</h4>
+            <p>信息素养比赛市级二等奖，同时探索前端与更多技术方向。</p>
         </div>
     </div>
 </section>
 
-<!-- Contact -->
+<!-- ===== Contact ===== -->
 <section class="section" id="contact">
     <div class="sec-tag">CONTACT</div>
-    <h2 class="sec-title">找到我</h2>
-    <p class="sec-text">游戏开黑 / 技术交流 / 随便聊聊 都欢迎 👇</p>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;">
-        <a href="https://github.com/nikoawe" target="_blank" style="display:inline-block;padding:10px 20px;border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#aaa;font-size:.88rem;transition:.3s;" onmouseenter="this.style.borderColor='#00e676';this.style.color='#00e676';" onmouseleave="this.style.borderColor='rgba(255,255,255,.12)';this.style.color='#aaa';">💻 GitHub · nikoawe</a>
-        <span style="display:inline-block;padding:10px 20px;border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#aaa;font-size:.88rem;">💬 QQ</span>
-        <span style="display:inline-block;padding:10px 20px;border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#aaa;font-size:.88rem;">📱 微信</span>
-        <span style="display:inline-block;padding:10px 20px;border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#aaa;font-size:.88rem;">🎮 Steam</span>
+    <h2 class="sec-title">联系我</h2>
+    <p class="sec-text">欢迎交流算法竞赛、乒乓球切磋、书法探讨 或 随便聊聊 🎯</p>
+    <div class="contact-row">
+        <a href="https://github.com/nikoawe" target="_blank" class="contact-btn">💻 GitHub · nikoawe</a>
+        <span class="contact-btn">💬 QQ</span>
+        <span class="contact-btn">📱 微信</span>
+        <span class="contact-btn">🎮 Steam</span>
+        <span class="contact-btn">🏫 实验三中</span>
     </div>
 </section>
 
 <footer class="ft">
-    <p>© 2026 彭禹诺 · Built with Claude Code ❤️</p>
-    <p style="margin-top:4px;">#NVIDIA #Logitech #Steam #Python #GamerLife</p>
+    <p>© 2026 彭禹诺 · 贵阳市第三实验中学</p>
+    <p style="margin-top:6px;">校训：刚健自强 · 止于至善</p>
 </footer>
 
 <script>
-    // Nav scroll effect
     window.addEventListener('scroll', () => {
         document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
     });
-
-    // Animate skill bars on scroll
-    const bars = document.querySelectorAll('.bar');
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                const w = e.target.style.width;
-                e.target.style.width = '0%';
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => { e.target.style.width = w; });
-                });
-                obs.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.4 });
-    bars.forEach(b => obs.observe(b));
 </script>
 </body>
 </html>
