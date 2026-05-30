@@ -72,5 +72,7 @@
 </div></div>
 <footer class="ft"><p>© 2026 彭禹诺 · 贵阳市第三实验中学</p></footer>
 <script>function toggleCard(c){c.querySelector('.card-extra').classList.toggle('show');c.querySelector('.card-hint').textContent=c.querySelector('.card-extra').classList.contains('show')?'点击收起 ▲':'点击展开 ▼'}</script>
+<script src="app.js"></script>
+<script>window.addEventListener("scroll",function(){document.getElementById("nav").classList.toggle("scrolled",window.scrollY>60)});</script>
 </body>
 </html>

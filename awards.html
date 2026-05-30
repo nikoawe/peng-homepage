@@ -88,5 +88,7 @@ function openMod(k){var d=M[k];document.getElementById('mtag').textContent=d.y;d
 function closeMod(e){if(e&&e.target!==document.getElementById('mo'))return;document.getElementById('mo').classList.remove('active');document.body.style.overflow=''}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.getElementById('mo').classList.remove('active');document.body.style.overflow=''}});
 </script>
+<script src="app.js"></script>
+<script>window.addEventListener("scroll",function(){document.getElementById("nav").classList.toggle("scrolled",window.scrollY>60)});</script>
 </body>
 </html>

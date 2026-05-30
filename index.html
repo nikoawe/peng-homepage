@@ -2,29 +2,38 @@
 <html lang="zh-CN">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>首页 — 彭禹诺</title><link rel="stylesheet" href="style.css">
+<style>.typewriter{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid #00e676;animation:typing 3s steps(30),blink .6s step-end infinite}@keyframes typing{from{width:0}to{width:100%}}@keyframes blink{50%{border-color:transparent}}</style>
 </head>
 <body>
-<nav class="nav">
+
+<nav class="nav" id="nav">
     <div class="logo">PYN</div>
     <ul class="nav-links">
-        <li><a href="index.html" class="active">首页</a></li>
-        <li><a href="about.html">关于</a></li>
-        <li><a href="awards.html">获奖</a></li>
-        <li><a href="goals.html">目标大学</a></li>
-        <li><a href="skills.html">技能</a></li>
-        <li><a href="role.html">学生工作</a></li>
-        <li><a href="contact.html">联系</a></li>
+        <li><a href="index.html" class="active">首页</a></li><li><a href="about.html">关于</a></li><li><a href="awards.html">获奖</a></li><li><a href="goals.html">目标大学</a></li><li><a href="skills.html">技能</a></li><li><a href="role.html">学生工作</a></li><li><a href="contact.html">联系</a></li>
     </ul>
 </nav>
-<div class="page"><div class="hero-full">
-    <div class="badge">🏫 贵阳市第三实验中学</div>
-    <h1>彭禹诺</h1>
-    <p class="sub">信息学竞赛选手 · 学生干部 · 乒乓健将</p>
-    <div class="tags"><span>💻 CSP-J/S 竞赛</span><span>🤖 AI 大赛</span><span>🏓 乒乓球</span><span>✍️ 书法</span><span>📋 学生会秘书长</span><span>🐍 Python 四级</span><span>🎮 C++ 一级</span><span>🎨 图形化编程</span></div>
-    <p style="color:#555;margin-top:40px;max-width:500px;font-size:.88rem;line-height:2;">
-        贵阳市第三实验中学高中在读。从小学的图形化编程启蒙，到 Python 电子学会四级、C++ 一级认证，再到 CSP-J 复赛一等奖——编程之路步步坚实。校学生自主管理委员会秘书长兼监督部部长，2025 年优秀学生干部。热爱乒乓、书法与游戏。目标是考入清华大学、香港大学或香港中文大学。
-    </p>
-</div></div>
+
+<div class="page">
+    <div class="hero-full">
+        <div class="badge" style="animation:fadeIn 1s ease">🏫 贵阳市第三实验中学</div>
+        <h1 class="glitch-text" data-text="彭禹诺" style="margin-bottom:16px;">彭禹诺</h1>
+        <p class="sub" style="height:28px;"><span class="typewriter">信息学竞赛选手 · 学生干部 · 乒乓健将</span></p>
+        <div class="tags">
+            <span>💻 CSP-J/S</span><span>🤖 AI 大赛</span><span>🏓 乒乓</span><span>🐍 Python</span><span>💻 C++</span><span>📋 学生会</span>
+        </div>
+        <p style="color:#555;margin-top:48px;max-width:520px;font-size:.88rem;line-height:2.2;animation:fadeInUp 1.4s ease;">
+            从图形化编程启蒙 → Python 电子学会四级 → C++ 一级认证<br>→ CSP-J 复赛一等奖 → ICPC 省赛铜奖<br>校学生自主管理委员会秘书长兼监督部部长<br>目标：<strong style="color:#ffd700;">清华</strong> / <strong style="color:#00e676;">港大</strong> / <strong style="color:#00bcd4;">港中文</strong>
+        </p>
+        <div style="margin-top:56px;animation:fadeInUp 1.8s ease;">
+            <a href="about.html" class="contact-btn" style="font-size:.95rem;padding:14px 32px;">⚡ 了解更多</a>
+        </div>
+    </div>
+</div>
+
 <footer class="ft"><p>© 2026 彭禹诺 · 贵阳市第三实验中学 · 校训：刚健自强 止于至善</p></footer>
+<script src="app.js"></script>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)});
+</script>
 </body>
 </html>
