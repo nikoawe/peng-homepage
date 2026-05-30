@@ -5,531 +5,335 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彭禹诺 — 个人主页</title>
     <style>
-        /* ===== Reset ===== */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         body {
             font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
-            background: #0a0a0f;
-            color: #e0e0e0;
+            background: #0d0d14;
+            color: #ddd;
             line-height: 1.8;
-            overflow-x: hidden;
         }
+        a { color: inherit; text-decoration: none; }
 
-        /* ===== Animated BG Particles ===== */
-        .particles {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ===== Navigation ===== */
+        /* Nav */
         .nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            padding: 16px 32px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background .3s;
-        }
-        .nav.scrolled {
-            background: rgba(10,10,15,.92);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 1px 0 rgba(255,255,255,.05);
-        }
-        .nav .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #6ee7b7, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-        }
-        .nav-links { display: flex; gap: 28px; list-style: none; }
-        .nav-links a {
-            color: #aaa;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color .3s;
-        }
-        .nav-links a:hover { color: #fff; }
-
-        /* ===== Hero ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-        }
-        .hero .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6ee7b7, #3b82f6, #8b5cf6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 28px;
-            box-shadow: 0 0 60px rgba(110,231,183,.25);
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .hero h1 {
-            font-size: 3.2rem;
-            font-weight: 900;
-            letter-spacing: 3px;
-            background: linear-gradient(135deg, #fff, #6ee7b7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero .tagline {
-            font-size: 1.2rem;
-            color: #888;
-            margin-top: 10px;
-            letter-spacing: 2px;
-        }
-        .hero .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            color: #555;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); opacity: .5; }
-            50% { transform: translateY(8px); opacity: 1; }
-        }
-
-        /* ===== Sections ===== */
-        .section {
-            position: relative;
-            z-index: 1;
-            max-width: 820px;
-            margin: 0 auto;
-            padding: 80px 24px;
-        }
-        .section-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: #6ee7b7;
-            margin-bottom: 8px;
-        }
-        .section-title {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-bottom: 36px;
-        }
-        .section p {
-            color: #aaa;
-            font-size: 1.02rem;
-            line-height: 2;
-        }
-
-        /* ===== Cards Grid ===== */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .card {
-            background: rgba(255,255,255,.03);
-            border: 1px solid rgba(255,255,255,.06);
-            border-radius: 16px;
-            padding: 28px 22px;
-            transition: all .35s;
-            position: relative;
-            overflow: hidden;
-        }
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, #6ee7b7, #3b82f6, transparent);
-            opacity: 0;
-            transition: opacity .35s;
-        }
-        .card:hover {
-            border-color: rgba(110,231,183,.25);
-            background: rgba(255,255,255,.05);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,.3);
-        }
-        .card:hover::before { opacity: 1; }
-        .card .icon {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-        }
-        .card h3 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-        }
-        .card p {
-            font-size: 0.88rem;
-            color: #777;
-            line-height: 1.7;
-        }
-
-        /* ===== Timeline ===== */
-        .timeline {
-            border-left: 1px solid rgba(255,255,255,.1);
-            padding-left: 28px;
-            margin-left: 8px;
-        }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 32px;
-            padding-left: 8px;
-        }
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: -33px;
-            top: 6px;
-            width: 10px; height: 10px;
-            background: #6ee7b7;
-            border-radius: 50%;
-            box-shadow: 0 0 12px rgba(110,231,183,.5);
-        }
-        .timeline-item .year {
-            font-size: 0.8rem;
-            color: #6ee7b7;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-        .timeline-item h4 {
-            font-size: 1rem;
-            margin: 4px 0 4px;
-        }
-        .timeline-item p {
-            font-size: 0.88rem;
-            color: #888;
-        }
-
-        /* ===== Skill Bars ===== */
-        .skill-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 16px;
-            gap: 14px;
-        }
-        .skill-row .name {
-            width: 100px;
-            font-size: 0.9rem;
-            color: #ccc;
-            text-align: right;
-            flex-shrink: 0;
-        }
-        .skill-row .bar-wrap {
-            flex: 1;
-            height: 6px;
-            background: rgba(255,255,255,.06);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .skill-row .bar {
-            height: 100%;
-            border-radius: 3px;
-            background: linear-gradient(90deg, #6ee7b7, #3b82f6);
-            transition: width 1s ease;
-        }
-
-        /* ===== Contact ===== */
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 16px;
-        }
-        .contact-btn {
-            display: inline-block;
-            padding: 10px 22px;
-            border: 1px solid rgba(255,255,255,.15);
-            border-radius: 30px;
-            color: #ccc;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 14px 28px;
+            display: flex; justify-content: space-between; align-items: center;
             transition: all .3s;
         }
-        .contact-btn:hover {
-            border-color: #6ee7b7;
-            color: #6ee7b7;
-            background: rgba(110,231,183,.06);
-        }
+        .nav.scrolled { background: rgba(13,13,20,.94); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(255,255,255,.04); }
+        .nav .logo { font-size: 1.2rem; font-weight: 800; color: #00e676; letter-spacing: 2px; }
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { color: #888; font-size: .85rem; letter-spacing: 1px; transition: .3s; }
+        .nav-links a:hover { color: #00e676; }
 
-        /* ===== Footer ===== */
-        .footer {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 40px 20px;
-            color: #555;
-            font-size: 0.82rem;
-            letter-spacing: 1px;
-            border-top: 1px solid rgba(255,255,255,.04);
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; position: relative; padding: 20px;
+            background: radial-gradient(ellipse at center, rgba(0,230,118,.06) 0%, transparent 70%);
         }
+        .hero .glitch {
+            font-size: 3.5rem; font-weight: 900; letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 0 40px rgba(0,230,118,.4), 0 0 80px rgba(0,230,118,.15);
+        }
+        .hero .tag {
+            font-size: 1.1rem; color: #666; margin-top: 10px; letter-spacing: 2px;
+        }
+        .hero .arrow { position: absolute; bottom: 50px; color: #444; animation: bounce 2s infinite; }
 
-        /* ===== Responsive ===== */
+        @keyframes bounce { 0%,100% { transform: translateY(0); opacity: .4; } 50% { transform: translateY(8px); opacity: 1; } }
+
+        /* Section */
+        .section { max-width: 800px; margin: 0 auto; padding: 80px 20px; }
+        .sec-tag { font-size: .75rem; text-transform: uppercase; letter-spacing: 3px; color: #00e676; margin-bottom: 6px; }
+        .sec-title { font-size: 1.8rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 32px; color: #fff; }
+        .sec-text { color: #999; font-size: .98rem; line-height: 2; }
+
+        /* Cards */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
+        .card {
+            background: rgba(255,255,255,.025);
+            border: 1px solid rgba(255,255,255,.05);
+            border-radius: 14px; padding: 24px 18px;
+            transition: all .35s;
+        }
+        .card:hover {
+            background: rgba(0,230,118,.04);
+            border-color: rgba(0,230,118,.2);
+            transform: translateY(-3px);
+        }
+        .card .icon { font-size: 2rem; margin-bottom: 10px; }
+        .card h4 { font-size: 1rem; margin-bottom: 6px; color: #eee; }
+        .card p { font-size: .82rem; color: #777; }
+
+        /* Skill bars */
+        .skill-row { display: flex; align-items: center; margin-bottom: 14px; gap: 14px; }
+        .skill-row .label { width: 110px; font-size: .85rem; color: #aaa; text-align: right; flex-shrink: 0; }
+        .skill-row .bar-bg { flex: 1; height: 5px; background: rgba(255,255,255,.05); border-radius: 3px; overflow: hidden; }
+        .skill-row .bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #00e676, #00bcd4); }
+
+        /* Timeline */
+        .tl { border-left: 1px solid rgba(255,255,255,.08); padding-left: 26px; margin-left: 8px; }
+        .tl-item { position: relative; margin-bottom: 24px; }
+        .tl-item::before {
+            content: ""; position: absolute; left: -30px; top: 6px;
+            width: 8px; height: 8px; background: #00e676; border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0,230,118,.5);
+        }
+        .tl-item .yr { font-size: .75rem; color: #00e676; letter-spacing: 2px; font-weight: 700; }
+        .tl-item h4 { font-size: .95rem; margin: 2px 0 4px; }
+        .tl-item p { font-size: .82rem; color: #888; }
+
+        /* Stat numbers */
+        .stats { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 24px; }
+        .stat { text-align: center; min-width: 90px; }
+        .stat .big { font-size: 2rem; font-weight: 900; color: #00e676; }
+        .stat .lbl { font-size: .75rem; color: #666; margin-top: 2px; }
+
+        /* Footer */
+        .ft { text-align: center; padding: 40px 20px; color: #444; font-size: .78rem; border-top: 1px solid rgba(255,255,255,.03); }
+
         @media (max-width: 600px) {
-            .nav { padding: 12px 16px; }
-            .nav-links { gap: 14px; }
-            .nav-links a { font-size: 0.78rem; }
-            .hero h1 { font-size: 2rem; }
-            .hero .tagline { font-size: 0.95rem; }
-            .section { padding: 50px 16px; }
-            .section-title { font-size: 1.5rem; }
+            .hero .glitch { font-size: 2rem; }
+            .nav { padding: 10px 14px; }
+            .nav-links { gap: 12px; }
+            .nav-links a { font-size: .75rem; }
+            .section { padding: 50px 14px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== 粒子背景 ===== -->
-<canvas class="particles" id="particles"></canvas>
-
-<!-- ===== 导航栏 ===== -->
 <nav class="nav" id="nav">
     <div class="logo">PENG</div>
     <ul class="nav-links">
         <li><a href="#about">关于</a></li>
+        <li><a href="#setup">装备</a></li>
         <li><a href="#skills">技能</a></li>
-        <li><a href="#journey">历程</a></li>
-        <li><a href="#interests">兴趣</a></li>
+        <li><a href="#games">游戏</a></li>
         <li><a href="#contact">联系</a></li>
     </ul>
 </nav>
 
-<!-- ===== Hero ===== -->
+<!-- Hero -->
 <section class="hero" id="home">
-    <div class="avatar">彭</div>
-    <h1>彭禹诺</h1>
-    <p class="tagline">探索 · 创造 · 热爱生活</p>
-    <div class="scroll-hint">▼ SCROLL</div>
+    <h1 class="glitch">彭禹诺</h1>
+    <p class="tag">Gamer · Builder · Tech Explorer</p>
+    <div class="stats">
+        <div class="stat"><div class="big">Steam</div><div class="lbl">主力平台</div></div>
+        <div class="stat"><div class="big">NVIDIA</div><div class="lbl">图形之心</div></div>
+        <div class="stat"><div class="big">Logitech</div><div class="lbl">游戏外设</div></div>
+    </div>
+    <div class="arrow">▼ SCROLL</div>
 </section>
 
-<!-- ===== 关于我 ===== -->
+<!-- About -->
 <section class="section" id="about">
-    <div class="section-label">ABOUT</div>
-    <h2 class="section-title">关于我</h2>
-    <p>
-        你好，我是彭禹诺。一个对世界充满好奇心的人。
+    <div class="sec-tag">ABOUT</div>
+    <h2 class="sec-title">关于我</h2>
+    <p class="sec-text">
+        我是彭禹诺，一个热爱游戏与科技的玩家。从 CS:GO 的精准枪法到 Minecraft 的无限创造，
+        从 Steam 的单机大作到多人在线竞技——游戏是我生活中不可或缺的一部分。
     </p>
-    <p style="margin-top:14px;">
-        我喜欢尝试新事物，相信每一段经历都是独特的财富。
-        从代码到游戏，从设计到创意，我在不同的领域中寻找乐趣与灵感。
-        追求简洁与效率，也享受创作的过程本身。
+    <p class="sec-text" style="margin-top:14px;">
+        除了游戏，我也对编程和技术充满好奇。平时会用 Python 写点小工具，
+        最近在学前端开发，想把自己的想法变成看得见的作品。
+        Claude Code 是我的编程搭子，帮了不少忙。
     </p>
-    <p style="margin-top:14px;">
-        目前在持续学习和成长中，希望用技术和创意做出有趣的东西，
-        也期待与志同道合的人一起探索更多可能。
+    <p class="sec-text" style="margin-top:14px;">
+        用的是 NVIDIA 显卡 + Logitech 外设，对设备手感有要求。
+        日常混迹 QQ / 微信，360 浏览器重度用户😄。
     </p>
 </section>
 
-<!-- ===== 技能 ===== -->
-<section class="section" id="skills">
-    <div class="section-label">SKILLS</div>
-    <h2 class="section-title">技能 & 工具</h2>
-
-    <div class="skill-row"><span class="name">HTML / CSS</span><div class="bar-wrap"><div class="bar" style="width:80%"></div></div></div>
-    <div class="skill-row"><span class="name">JavaScript</span><div class="bar-wrap"><div class="bar" style="width:60%"></div></div></div>
-    <div class="skill-row"><span class="name">Python</span><div class="bar-wrap"><div class="bar" style="width:55%"></div></div></div>
-    <div class="skill-row"><span class="name">Git / GitHub</span><div class="bar-wrap"><div class="bar" style="width:70%"></div></div></div>
-    <div class="skill-row"><span class="name">创意设计</span><div class="bar-wrap"><div class="bar" style="width:75%"></div></div></div>
-
-    <div class="card-grid" style="margin-top:40px;">
+<!-- Setup -->
+<section class="section" id="setup">
+    <div class="sec-tag">MY GEAR</div>
+    <h2 class="sec-title">我的装备</h2>
+    <div class="grid">
         <div class="card">
-            <div class="icon">💻</div>
-            <h3>前端开发</h3>
-            <p>喜欢构建漂亮的用户界面，关注细节与体验。</p>
+            <div class="icon">🖥️</div>
+            <h4>NVIDIA GPU</h4>
+            <p>DLSS、Reflex、Game Ready 驱动 — 帧率即正义。</p>
         </div>
         <div class="card">
             <div class="icon">🎮</div>
-            <h3>游戏热爱</h3>
-            <p>资深玩家，享受游戏世界的无限创意。</p>
+            <h4>Logitech G 系列</h4>
+            <p>G HUB 调校，手感与精准的平衡。</p>
+        </div>
+        <div class="card">
+            <div class="icon">⌨️</div>
+            <h4>搜狗输入法</h4>
+            <p>打字不累，中文输入效率拉满。</p>
+        </div>
+        <div class="card">
+            <div class="icon">🌐</div>
+            <h4>360 浏览器</h4>
+            <p>日常上网主力，兼容性与速度兼顾。</p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section class="section" id="skills">
+    <div class="sec-tag">SKILLS</div>
+    <h2 class="sec-title">技能树</h2>
+
+    <div class="skill-row"><span class="label">游戏理解</span><div class="bar-bg"><div class="bar" style="width: 95%"></div></div></div>
+    <div class="skill-row"><span class="label">Python</span><div class="bar-bg"><div class="bar" style="width: 55%"></div></div></div>
+    <div class="skill-row"><span class="label">HTML / CSS</span><div class="bar-bg"><div class="bar" style="width: 60%"></div></div></div>
+    <div class="skill-row"><span class="label">Git & GitHub</span><div class="bar-bg"><div class="bar" style="width: 65%"></div></div></div>
+    <div class="skill-row"><span class="label">Claude Code</span><div class="bar-bg"><div class="bar" style="width: 80%"></div></div></div>
+    <div class="skill-row"><span class="label">电脑清理😆</span><div class="bar-bg"><div class="bar" style="width: 90%"></div></div></div>
+
+    <div class="grid" style="margin-top: 36px;">
+        <div class="card">
+            <div class="icon">🐍</div>
+            <h4>Python 脚本</h4>
+            <p>写过一些小工具和自动化脚本，用 xigua-python 练手。</p>
         </div>
         <div class="card">
             <div class="icon">🎨</div>
-            <h3>设计审美</h3>
-            <p>对视觉有自己独到的理解，追求简约之美。</p>
+            <h4>前端入门</h4>
+            <p>会用 Claude Code 辅助写网页，就像你现在看到的这个。</p>
         </div>
         <div class="card">
-            <div class="icon">🚀</div>
-            <h3>快速学习者</h3>
-            <p>善于快速上手新工具和新概念。</p>
+            <div class="icon">🔧</div>
+            <h4>系统调校</h4>
+            <p>C 盘清理大师，NVIDIA 控制面板玩家。</p>
+        </div>
+        <div class="card">
+            <div class="icon">🤖</div>
+            <h4>AI 工具</h4>
+            <p>Claude Code + DeepSeek 重度用户，AI 辅助开发效率翻倍。</p>
         </div>
     </div>
 </section>
 
-<!-- ===== 历程 ===== -->
-<section class="section" id="journey">
-    <div class="section-label">JOURNEY</div>
-    <h2 class="section-title">成长历程</h2>
-    <div class="timeline">
-        <div class="timeline-item">
-            <div class="year">2021</div>
-            <h4>开始接触编程</h4>
-            <p>从简单的网页入手，打开了新世界的大门。</p>
+<!-- Games -->
+<section class="section" id="games">
+    <div class="sec-tag">GAMES</div>
+    <h2 class="sec-title">游戏世界</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="icon">🔫</div>
+            <h4>CS:GO / CS2</h4>
+            <p>5E 对战平台常客，枪法与意识的修炼场。</p>
         </div>
-        <div class="timeline-item">
-            <div class="year">2022</div>
-            <h4>深入学习与探索</h4>
-            <p>尝试不同的技术方向，积累了丰富的项目经验。</p>
+        <div class="card">
+            <div class="icon">⛏️</div>
+            <h4>Minecraft</h4>
+            <p>网易版玩家，创造与生存的无限世界。</p>
         </div>
-        <div class="timeline-item">
-            <div class="year">2024</div>
-            <h4>独立完成作品</h4>
-            <p>开始独立设计和开发自己的项目。</p>
+        <div class="card">
+            <div class="icon">🏰</div>
+            <h4>Epic Games</h4>
+            <p>免费游戏收藏家，偶尔也认真玩玩。</p>
         </div>
-        <div class="timeline-item">
-            <div class="year">2025 — 现在</div>
-            <h4>持续成长中</h4>
-            <p>不断学习新技术，探索更多创意可能。</p>
+        <div class="card">
+            <div class="icon">🗡️</div>
+            <h4>Ubisoft</h4>
+            <p>刺客信条、彩虹六号…育碧全家桶。</p>
+        </div>
+        <div class="card">
+            <div class="icon">🚗</div>
+            <h4>Rockstar Games</h4>
+            <p>GTA、荒野大镖客 — 开放世界爱好者。</p>
+        </div>
+        <div class="card">
+            <div class="icon">⚔️</div>
+            <h4>完美世界竞技</h4>
+            <p>国风竞技，不一样的战斗体验。</p>
+        </div>
+        <div class="card">
+            <div class="icon">🎯</div>
+            <h4>EA</h4>
+            <p>战地、FIFA…枪车球都沾点。</p>
+        </div>
+        <div class="card">
+            <div class="icon">📦</div>
+            <h4>Steam 库存</h4>
+            <p>游戏库深度玩家，买游戏也是一种游戏。</p>
         </div>
     </div>
 </section>
 
-<!-- ===== 兴趣爱好 ===== -->
-<section class="section" id="interests">
-    <div class="section-label">INTERESTS</div>
-    <h2 class="section-title">兴趣爱好</h2>
-    <div class="card-grid">
-        <div class="card">
-            <div class="icon">🎮</div>
-            <h3>电子游戏</h3>
-            <p>热爱各类游戏，从竞技到开放世界，追求沉浸式体验。</p>
+<!-- Timeline -->
+<section class="section" id="timeline">
+    <div class="sec-tag">TIMELINE</div>
+    <h2 class="sec-title">成长足迹</h2>
+    <div class="tl">
+        <div class="tl-item">
+            <div class="yr">早些年</div>
+            <h4>游戏入门</h4>
+            <p>从 Minecraft 和 CS 开始接触游戏世界，一发不可收拾。</p>
         </div>
-        <div class="card">
-            <div class="icon">💡</div>
-            <h3>科技数码</h3>
-            <p>关注最新科技动态，喜欢捣鼓各种数码产品。</p>
+        <div class="tl-item">
+            <div class="yr">2021</div>
+            <h4>开始学编程</h4>
+            <p>接触 Python，用小工具解决日常问题。</p>
         </div>
-        <div class="card">
-            <div class="icon">🎵</div>
-            <h3>音乐</h3>
-            <p>听歌是日常，各种风格都能欣赏。</p>
+        <div class="tl-item">
+            <div class="yr">2024</div>
+            <h4>配备 NVIDIA + Logitech</h4>
+            <p>升级装备，游戏体验质的飞跃。</p>
         </div>
-        <div class="card">
-            <div class="icon">📸</div>
-            <h3>创意内容</h3>
-            <p>喜欢制作和分享有趣的创意内容。</p>
+        <div class="tl-item">
+            <div class="yr">2025</div>
+            <h4>AI 辅助开发</h4>
+            <p>开始用 Claude Code，编程效率大提升。</p>
+        </div>
+        <div class="tl-item">
+            <div class="yr">2026 · 现在</div>
+            <h4>持续进化中</h4>
+            <p>学前端，做网页，探索更多创造的可能性。</p>
         </div>
     </div>
 </section>
 
-<!-- ===== 联系 ===== -->
+<!-- Contact -->
 <section class="section" id="contact">
-    <div class="section-label">CONTACT</div>
-    <h2 class="section-title">联系我</h2>
-    <p>欢迎交流与合作 🤝</p>
-    <div class="contact-links">
-        <a href="https://github.com/nikoawe" target="_blank" class="contact-btn">💻 GitHub</a>
-        <a href="mailto:peng@example.com" class="contact-btn">📧 Email</a>
-        <a href="#" class="contact-btn">💬 微信</a>
-        <a href="#" class="contact-btn">📱 QQ</a>
+    <div class="sec-tag">CONTACT</div>
+    <h2 class="sec-title">找到我</h2>
+    <p class="sec-text">游戏开黑 / 技术交流 / 随便聊聊 都欢迎 👇</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;">
+        <a href="https://github.com/nikoawe" target="_blank" style="display:inline-block;padding:10px 20px;border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#aaa;font-size:.88rem;transition:.3s;" onmouseenter="this.style.borderColor='#00e676';this.style.color='#00e676';" onmouseleave="this.style.borderColor='rgba(255,255,255,.12)';this.style.color='#aaa';">💻 GitHub · nikoawe</a>
+        <span style="display:inline-block;padding:10px 20px;border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#aaa;font-size:.88rem;">💬 QQ</span>
+        <span style="display:inline-block;padding:10px 20px;border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#aaa;font-size:.88rem;">📱 微信</span>
+        <span style="display:inline-block;padding:10px 20px;border:1px solid rgba(255,255,255,.12);border-radius:24px;color:#aaa;font-size:.88rem;">🎮 Steam</span>
     </div>
 </section>
 
-<!-- ===== 页脚 ===== -->
-<footer class="footer">
-    <p>© 2026 彭禹诺 · Made with ❤️</p>
-    <p style="margin-top:4px;color:#444;">Stay curious. Keep building.</p>
+<footer class="ft">
+    <p>© 2026 彭禹诺 · Built with Claude Code ❤️</p>
+    <p style="margin-top:4px;">#NVIDIA #Logitech #Steam #Python #GamerLife</p>
 </footer>
 
-<!-- ===== 粒子动画 ===== -->
 <script>
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let w, h, particles = [];
-
-    function resize() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    for (let i = 0; i < 60; i++) {
-        particles.push({
-            x: Math.random() * w,
-            y: Math.random() * h,
-            r: Math.random() * 1.5 + .5,
-            vx: (Math.random() - .5) * .4,
-            vy: (Math.random() - .5) * .4,
-            alpha: Math.random() * .5 + .2
-        });
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, w, h);
-        particles.forEach(p => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(110,231,183,${p.alpha})`;
-            ctx.fill();
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.x < 0 || p.x > w) p.vx *= -1;
-            if (p.y < 0 || p.y > h) p.vy *= -1;
-        });
-
-        // connection lines
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 130) {
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(110,231,183,${0.04 * (1 - dist / 130)})`;
-                    ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(draw);
-    }
-    draw();
-
     // Nav scroll effect
     window.addEventListener('scroll', () => {
         document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // Skill bar animation
+    // Animate skill bars on scroll
     const bars = document.querySelectorAll('.bar');
-    const observer = new IntersectionObserver(entries => {
+    const obs = new IntersectionObserver(entries => {
         entries.forEach(e => {
             if (e.isIntersecting) {
                 const w = e.target.style.width;
                 e.target.style.width = '0%';
-                setTimeout(() => { e.target.style.width = w; }, 100);
-                observer.unobserve(e.target);
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => { e.target.style.width = w; });
+                });
+                obs.unobserve(e.target);
             }
         });
-    }, { threshold: 0.5 });
-    bars.forEach(b => observer.observe(b));
+    }, { threshold: 0.4 });
+    bars.forEach(b => obs.observe(b));
 </script>
-
 </body>
 </html>
