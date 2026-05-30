@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>关于 — 彭禹诺</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+    <div class="logo">PYN</div>
+    <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html" class="active">关于</a></li>
+        <li><a href="awards.html">获奖</a></li>
+        <li><a href="goals.html">目标大学</a></li>
+        <li><a href="skills.html">技能</a></li>
+        <li><a href="role.html">学生工作</a></li>
+        <li><a href="contact.html">联系</a></li>
+    </ul>
+</nav>
+
+<div class="page"><div class="container">
+    <div class="sec-tag">ABOUT</div>
+    <h2 class="sec-title">关于我</h2>
+    <p class="sec-text">我是<strong style="color:#eee;">彭禹诺</strong>，贵阳市第三实验中学学生，在代码、运动与书法之间寻找平衡。</p>
+    <p class="sec-text" style="margin-top:14px;">从小学<strong style="color:#ffd700;">书法一等奖</strong>起步，到中学征战<strong style="color:#00e676;">信息学奥林匹克竞赛</strong>和<strong style="color:#ff8a65;">ICPC</strong>，再到<strong style="color:#00bcd4;">人工智能大赛</strong>和<strong style="color:#eee;">信息素养比赛</strong>——每一步都在突破自己。</p>
+    <p class="sec-text" style="margin-top:14px;">竞赛之外，担任<strong style="color:#00e676;">校学生自主管理委员会秘书长兼监督部部长</strong>，2025年获评<strong style="color:#eee;">优秀学生干部</strong>。乒乓获市级<strong style="color:#ffd700;">第一名</strong>。</p>
+
+    <div class="grid" style="margin-top:32px;">
+        <div class="card" onclick="toggleCard(this)">
+            <div class="card-icon">💻</div><h4>信息学竞赛之路</h4>
+            <div class="card-hint">点击展开 ▼</div>
+            <div class="card-extra">从 ICPC 省赛铜奖到 CSP-J/S 双料奖项，再到 2025 年 CSP-J 复赛<strong style="color:#ffd700;">一等奖</strong>、CSP-S 复赛<strong style="color:#b0bec5;">二等奖</strong>——算法竞赛是高中最浓墨重彩的一笔。</div>
+        </div>
+        <div class="card" onclick="toggleCard(this)">
+            <div class="card-icon">🏓</div><h4>乒乓球 · 市级第一</h4>
+            <div class="card-hint">点击展开 ▼</div>
+            <div class="card-extra">2023 年贵阳市第三届"国球进社区"乒乓球联赛 13~16 岁组<strong style="color:#ffd700;">第一名</strong>。球台上练出的专注力同样适用于编程。</div>
+        </div>
+        <div class="card" onclick="toggleCard(this)">
+            <div class="card-icon">✍️</div><h4>书法 · 从小练就</h4>
+            <div class="card-hint">点击展开 ▼</div>
+            <div class="card-extra">小学时期获得<strong style="color:#ffd700;">汉字书法大赛一等奖</strong>。一笔一划间养成的耐心与审美，至今受益。</div>
+        </div>
+        <div class="card" onclick="toggleCard(this)">
+            <div class="card-icon">🤖</div><h4>人工智能 & 科创</h4>
+            <div class="card-hint">点击展开 ▼</div>
+            <div class="card-extra">全国青少年人工智能大赛省级选拔赛<strong style="color:#ffd700;">一等奖</strong>（2026），2024、2026 年信息素养比赛两次市级<strong style="color:#b0bec5;">二等奖</strong>。</div>
+        </div>
+    </div>
+</div></div>
+
+<footer class="ft"><p>© 2026 彭禹诺 · 贵阳市第三实验中学</p></footer>
+<script>
+function toggleCard(c){c.querySelector('.card-extra').classList.toggle('show');c.querySelector('.card-hint').textContent=c.querySelector('.card-extra').classList.contains('show')?'点击收起 ▲':'点击展开 ▼'}
+</script>
+</body>
+</html>

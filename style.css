@@ -1,0 +1,113 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;background:#0a0a12;color:#d0d0d0;line-height:1.8;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,18,.94);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(255,255,255,.04)}
+.nav .logo{font-size:1.1rem;font-weight:800;color:#00e676;letter-spacing:2px}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:#888;font-size:.84rem;letter-spacing:1px;transition:.3s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:#00e676}
+
+/* Page content */
+.page{padding-top:80px;flex:1}
+.container{max-width:860px;margin:0 auto;padding:60px 20px}
+
+/* Typography */
+.sec-tag{font-size:.72rem;letter-spacing:4px;color:#00e676;margin-bottom:6px}
+.sec-title{font-size:1.7rem;font-weight:800;letter-spacing:2px;margin-bottom:6px;color:#fff}
+.sec-sub{font-size:.88rem;color:#555;margin-bottom:30px}
+.sec-text{color:#aaa;font-size:.96rem;line-height:2}
+
+/* Hero (home) */
+.hero-full{min-height:calc(100vh - 80px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;background:radial-gradient(ellipse at center,rgba(0,230,118,.05) 0%,transparent 70%)}
+.hero-full .badge{padding:6px 16px;border:1px solid rgba(0,230,118,.3);border-radius:20px;font-size:.78rem;color:#00e676;letter-spacing:2px;margin-bottom:20px}
+.hero-full h1{font-size:3.2rem;font-weight:900;letter-spacing:4px;background:linear-gradient(135deg,#fff 30%,#00e676);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.hero-full .sub{font-size:1.05rem;color:#666;letter-spacing:2px;margin-bottom:28px}
+.hero-full .tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.hero-full .tags span{padding:5px 14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;font-size:.78rem;color:#999}
+
+/* Cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:16px}
+.card{background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.04);border-radius:14px;padding:22px 20px;transition:all .35s;cursor:pointer}
+.card:hover{background:rgba(0,230,118,.03);border-color:rgba(0,230,118,.15);transform:translateY(-3px)}
+.card .card-icon{font-size:2rem;margin-bottom:10px}
+.card h4{font-size:1rem;color:#eee;margin-bottom:4px}
+.card .card-extra{max-height:0;overflow:hidden;transition:max-height .4s ease;font-size:.84rem;color:#999;line-height:1.9}
+.card .card-extra.show{max-height:400px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.05)}
+.card .card-hint{font-size:.72rem;color:#555;margin-top:6px}
+
+/* Accordion */
+.accordion{margin-top:12px}
+.acc-header{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:12px;cursor:pointer;font-size:1rem;color:#ccc;letter-spacing:1px;transition:all .3s;text-align:left;font-family:inherit}
+.acc-header:hover{background:rgba(0,230,118,.04);border-color:rgba(0,230,118,.15)}
+.acc-header .aicon{margin-right:10px;font-size:1.2rem}
+.acc-header .aarrow{transition:transform .35s;font-size:.8rem;color:#555}
+.acc-header.open .aarrow{transform:rotate(180deg);color:#00e676}
+.acc-header.open{border-color:rgba(0,230,118,.2);background:rgba(0,230,118,.03);border-radius:12px 12px 0 0}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .5s ease,padding .3s;background:rgba(255,255,255,.01);border:1px solid transparent;border-top:none;border-radius:0 0 12px 12px}
+.acc-body.expanded{max-height:2000px;border-color:rgba(0,230,118,.1);padding:16px 20px}
+.acc-body table{width:100%;border-collapse:collapse}
+.acc-body th{text-align:left;padding:8px 10px;color:#00e676;font-size:.78rem;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,.06)}
+.acc-body td{padding:8px 10px;font-size:.88rem;color:#bbb;border-bottom:1px solid rgba(255,255,255,.02)}
+.acc-body tr:hover td{background:rgba(255,255,255,.01)}
+.gold{color:#ffd700!important;font-weight:600}
+.silver{color:#b0bec5!important;font-weight:600}
+.bronze{color:#ff8a65!important;font-weight:600}
+.detail-link{color:#00e676;cursor:pointer;font-size:.78rem;transition:.2s}
+.detail-link:hover{text-decoration:underline}
+
+/* Uni cards */
+.uni-card{background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.05);border-radius:18px;overflow:hidden;transition:all .4s;cursor:pointer}
+.uni-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.4)}
+.uni-card .uni-img{width:100%;height:180px;object-fit:cover;display:block}
+.uni-card .uni-body{padding:18px 20px}
+.uni-card .uni-rank{display:inline-block;padding:3px 12px;border-radius:12px;font-size:.72rem;font-weight:700;letter-spacing:1px;margin-bottom:8px}
+.uni-card .uni-rank.g1{background:rgba(255,215,0,.15);color:#ffd700;border:1px solid rgba(255,215,0,.25)}
+.uni-card .uni-rank.g2{background:rgba(0,230,118,.12);color:#00e676;border:1px solid rgba(0,230,118,.2)}
+.uni-card .uni-rank.g3{background:rgba(0,188,212,.12);color:#00bcd4;border:1px solid rgba(0,188,212,.2)}
+.uni-card h3{font-size:1.2rem;color:#fff;margin-bottom:2px}
+.uni-card .uni-en{font-size:.78rem;color:#555;margin-bottom:10px}
+.uni-card .uni-stats{display:flex;gap:14px;margin-bottom:8px;flex-wrap:wrap}
+.uni-card .uni-stat{text-align:center}
+.uni-card .uni-stat .n{font-size:1.1rem;font-weight:800;color:#00e676}
+.uni-card .uni-stat .l{font-size:.65rem;color:#666}
+.uni-card .uni-extra{max-height:0;overflow:hidden;transition:max-height .5s ease;font-size:.82rem;color:#999;line-height:2}
+.uni-card .uni-extra.show{max-height:1200px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.05)}
+.uni-card .uni-extra table{width:100%;border-collapse:collapse;margin:8px 0}
+.uni-card .uni-extra td,.uni-card .uni-extra th{padding:5px 8px;font-size:.74rem;border-bottom:1px solid rgba(255,255,255,.03);text-align:center}
+.uni-card .uni-extra th{color:#00e676}
+.uni-card .uni-extra a{color:#00e676;text-decoration:underline}
+
+/* Skill bars */
+.bar-wrap{margin-bottom:16px}
+.bar-wrap .bar-label{display:flex;justify-content:space-between;margin-bottom:6px;font-size:.85rem;color:#aaa}
+.bar-wrap .bar-bg{height:5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
+.bar-wrap .bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#00e676,#00bcd4);width:0;transition:width 1.2s ease}
+
+/* Contact */
+.contact-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.contact-btn{display:inline-block;padding:10px 20px;border:1px solid rgba(255,255,255,.1);border-radius:24px;color:#aaa;font-size:.85rem;transition:.3s}
+.contact-btn:hover{border-color:#00e676;color:#00e676;background:rgba(0,230,118,.05)}
+
+/* Footer */
+.ft{text-align:center;padding:30px 20px;color:#444;font-size:.76rem;border-top:1px solid rgba(255,255,255,.03)}
+
+/* Modal */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.78);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal{background:#151520;border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:32px 28px;max-width:620px;width:92%;max-height:82vh;overflow-y:auto;transform:translateY(20px);transition:transform .35s}
+.modal-overlay.active .modal{transform:translateY(0)}
+.modal h3{font-size:1.3rem;color:#fff;margin-bottom:4px}
+.modal .m-tag{font-size:.78rem;color:#00e676;letter-spacing:2px}
+.modal .m-body{margin-top:18px;color:#bbb;font-size:.92rem;line-height:2}
+.modal .m-body a{color:#00e676;text-decoration:underline}
+.modal .m-body ul{padding-left:18px;margin:8px 0}
+.modal .close-btn{float:right;background:none;border:1px solid rgba(255,255,255,.15);color:#aaa;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;transition:.3s}
+.modal .close-btn:hover{border-color:#00e676;color:#00e676}
+
+@media(max-width:600px){
+    .nav{padding:10px 14px}.nav-links{gap:10px;flex-wrap:wrap}.nav-links a{font-size:.72rem}
+    .container{padding:40px 14px}.hero-full h1{font-size:2rem}
+}

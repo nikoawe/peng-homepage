@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>技能 — 彭禹诺</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+    <div class="logo">PYN</div>
+    <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于</a></li>
+        <li><a href="awards.html">获奖</a></li>
+        <li><a href="goals.html">目标大学</a></li>
+        <li><a href="skills.html" class="active">技能</a></li>
+        <li><a href="role.html">学生工作</a></li>
+        <li><a href="contact.html">联系</a></li>
+    </ul>
+</nav>
+
+<div class="page"><div class="container">
+    <div class="sec-tag">SKILLS</div>
+    <h2 class="sec-title">能力雷达</h2>
+
+    <div class="bar-wrap"><div class="bar-label"><span>C++ / 算法竞赛</span><span style="color:#00e676;">82%</span></div><div class="bar-bg"><div class="bar-fill" data-w="82%"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>Python</span><span style="color:#00e676;">65%</span></div><div class="bar-bg"><div class="bar-fill" data-w="65%"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>数据结构</span><span style="color:#00e676;">78%</span></div><div class="bar-bg"><div class="bar-fill" data-w="78%"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>Web 前端 (HTML/CSS)</span><span style="color:#00e676;">55%</span></div><div class="bar-bg"><div class="bar-fill" data-w="55%"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>Git & GitHub</span><span style="color:#00e676;">65%</span></div><div class="bar-bg"><div class="bar-fill" data-w="65%"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>乒乓球</span><span style="color:#00e676;">88%</span></div><div class="bar-bg"><div class="bar-fill" data-w="88%"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>书法</span><span style="color:#00e676;">80%</span></div><div class="bar-bg"><div class="bar-fill" data-w="80%"></div></div></div>
+    <div class="bar-wrap"><div class="bar-label"><span>组织管理</span><span style="color:#00e676;">75%</span></div><div class="bar-bg"><div class="bar-fill" data-w="75%"></div></div></div>
+
+    <div class="grid" style="margin-top:32px;">
+        <div class="card" onclick="toggleCard(this)"><div class="card-icon">💻</div><h4>C++ / 算法竞赛</h4><div class="card-hint">点击展开 ▼</div><div class="card-extra">信息学竞赛核心。熟练 STL，掌握动态规划、贪心、搜索、图论等经典算法。CSP-J 复赛一等奖是最佳证明。</div></div>
+        <div class="card" onclick="toggleCard(this)"><div class="card-icon">🐍</div><h4>Python</h4><div class="card-hint">点击展开 ▼</div><div class="card-extra">AI 大赛主力语言，也用于自动化脚本和日常工具。关注 AI 与机器学习方向。</div></div>
+        <div class="card" onclick="toggleCard(this)"><div class="card-icon">🌐</div><h4>Web 前端 & Git</h4><div class="card-hint">点击展开 ▼</div><div class="card-extra">独立完成多个网站项目，熟练 HTML/CSS 响应式布局、Git 版本管理、GitHub Pages 部署。</div></div>
+        <div class="card" onclick="toggleCard(this)"><div class="card-icon">🤖</div><h4>AI 工具应用</h4><div class="card-hint">点击展开 ▼</div><div class="card-extra">Claude Code 重度用户，善用 AI 辅助编程和创作，效率提升的同时保持独立思考。</div></div>
+    </div>
+</div></div>
+
+<footer class="ft"><p>© 2026 彭禹诺 · 贵阳市第三实验中学</p></footer>
+<script>
+function toggleCard(c){c.querySelector('.card-extra').classList.toggle('show');c.querySelector('.card-hint').textContent=c.querySelector('.card-extra').classList.contains('show')?'点击收起 ▲':'点击展开 ▼'}
+var bs=document.querySelectorAll('.bar-fill');
+var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.style.width=en.target.dataset.w;o.unobserve(en.target)}})},{threshold:0.3});
+bs.forEach(function(b){o.observe(b)});
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>学生工作 — 彭禹诺</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+    <div class="logo">PYN</div>
+    <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于</a></li>
+        <li><a href="awards.html">获奖</a></li>
+        <li><a href="goals.html">目标大学</a></li>
+        <li><a href="skills.html">技能</a></li>
+        <li><a href="role.html" class="active">学生工作</a></li>
+        <li><a href="contact.html">联系</a></li>
+    </ul>
+</nav>
+
+<div class="page"><div class="container">
+    <div class="sec-tag">LEADERSHIP</div>
+    <h2 class="sec-title">学生工作</h2>
+
+    <div class="card" onclick="toggleCard(this)" style="margin-top:12px;">
+        <div class="card-icon">📋</div>
+        <h4>校学生自主管理委员会 · 秘书长兼监督部部长</h4>
+        <div class="card-hint">点击展开 ▼</div>
+        <div class="card-extra">
+            <p>负责统筹学生自治事务，协调各部门工作，监督规章制度执行。</p>
+            <p style="margin-top:10px;">核心能力：</p>
+            <p>• <strong style="color:#00e676;">沟通协调</strong> — 在老师与学生之间搭建桥梁<br>
+            • <strong style="color:#00e676;">团队管理</strong> — 带领部门成员高效完成各项任务<br>
+            • <strong style="color:#00e676;">责任意识</strong> — 对每一份工作负责到底<br>
+            • <strong style="color:#00e676;">时间管理</strong> — 竞赛、学业与工作三者平衡</p>
+            <p style="margin-top:12px;">2025 年获评<strong style="color:#ffd700;">"优秀学生干部"</strong>，是对工作最好的肯定。</p>
+        </div>
+    </div>
+
+    <div style="margin-top:32px;">
+        <p class="sec-text" style="color:#999;">
+            在学生工作中锻炼的软技能——领导力、沟通力、执行力——与编程硬实力同等重要。
+            它们让我在团队合作、竞赛协作中更加从容自信。
+        </p>
+    </div>
+</div></div>
+
+<footer class="ft"><p>© 2026 彭禹诺 · 贵阳市第三实验中学</p></footer>
+<script>function toggleCard(c){c.querySelector('.card-extra').classList.toggle('show');c.querySelector('.card-hint').textContent=c.querySelector('.card-extra').classList.contains('show')?'点击收起 ▲':'点击展开 ▼'}</script>
+</body>
+</html>

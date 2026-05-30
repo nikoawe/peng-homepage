@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>获奖 — 彭禹诺</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+    <div class="logo">PYN</div>
+    <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于</a></li>
+        <li><a href="awards.html" class="active">获奖</a></li>
+        <li><a href="goals.html">目标大学</a></li>
+        <li><a href="skills.html">技能</a></li>
+        <li><a href="role.html">学生工作</a></li>
+        <li><a href="contact.html">联系</a></li>
+    </ul>
+</nav>
+
+<div class="page"><div class="container">
+    <div class="sec-tag">HONORS & AWARDS</div>
+    <h2 class="sec-title">获奖经历</h2>
+    <div class="sec-sub">🏅 点击分类展开，点击"查看详情"了解更多</div>
+
+    <div class="accordion">
+        <button class="acc-header" onclick="toggleAcc(this)"><span><span class="aicon">💻</span>信息学竞赛</span><span class="aarrow">▼</span></button>
+        <div class="acc-body">
+            <table>
+                <thead><tr><th>年份</th><th>比赛</th><th>获奖</th><th style="text-align:right;">详情</th></tr></thead>
+                <tbody>
+                    <tr><td>2024</td><td>ICPC 贵州省赛 · 中学组</td><td class="bronze">🥉 铜奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('ICPC')">查看详情 →</span></td></tr>
+                    <tr><td>2024</td><td>CSP-J 初赛</td><td>三等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('CSPJ')">查看详情 →</span></td></tr>
+                    <tr><td>2024</td><td>CSP-S 初赛</td><td>三等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('CSPS')">查看详情 →</span></td></tr>
+                    <tr><td>2024</td><td>CSP-J 复赛</td><td class="silver">🥈 二等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('CSPJ')">查看详情 →</span></td></tr>
+                    <tr><td>2024</td><td>CSP-S 复赛</td><td class="silver">🥈 二等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('CSPS')">查看详情 →</span></td></tr>
+                    <tr><td>2025</td><td>CSP 初赛</td><td class="silver">🥈 二等奖 / 三等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('CSP')">查看详情 →</span></td></tr>
+                    <tr><td>2025</td><td>CSP-J 复赛</td><td class="gold">🥇 一等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('CSPJ')">查看详情 →</span></td></tr>
+                    <tr><td>2025</td><td>CSP-S 复赛</td><td class="silver">🥈 二等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('CSPS')">查看详情 →</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button class="acc-header" onclick="toggleAcc(this)" style="margin-top:8px;"><span><span class="aicon">🤖</span>人工智能 & 信息素养</span><span class="aarrow">▼</span></button>
+        <div class="acc-body">
+            <table>
+                <thead><tr><th>年份</th><th>比赛</th><th>获奖</th><th style="text-align:right;">详情</th></tr></thead>
+                <tbody>
+                    <tr><td>2026</td><td>全国青少年人工智能大赛 · 省级选拔赛</td><td class="gold">🥇 一等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('AI')">查看详情 →</span></td></tr>
+                    <tr><td>2024</td><td>贵州省师生信息素养比赛 · 贵阳市</td><td class="silver">🥈 二等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('INFO')">查看详情 →</span></td></tr>
+                    <tr><td>2026</td><td>信息素养比赛 · 市级</td><td class="silver">🥈 二等奖</td><td style="text-align:right;"><span class="detail-link" onclick="event.stopPropagation();openMod('INFO')">查看详情 →</span></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <button class="acc-header" onclick="toggleAcc(this)" style="margin-top:8px;"><span><span class="aicon">🌟</span>综合荣誉</span><span class="aarrow">▼</span></button>
+        <div class="acc-body">
+            <table>
+                <thead><tr><th>年份</th><th>荣誉</th><th>获奖</th></tr></thead>
+                <tbody>
+                    <tr><td>小学</td><td>汉字书法大赛</td><td class="gold">🥇 一等奖</td></tr>
+                    <tr><td>2023</td><td>贵阳市第三届国球进社区乒乓球联赛（13~16 岁组）</td><td class="gold">🥇 第一名</td></tr>
+                    <tr><td>2025</td><td>优秀学生干部</td><td>校级</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div></div>
+
+<div class="modal-overlay" id="mo" onclick="closeMod(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeMod()">✕</button>
+        <div class="m-tag" id="mtag"></div><h3 id="mtitle"></h3><div class="m-body" id="mbody"></div>
+    </div>
+</div>
+
+<footer class="ft"><p>© 2026 彭禹诺 · 贵阳市第三实验中学</p></footer>
+
+<script>
+const M={ICPC:{t:'ICPC 国际大学生程序设计竞赛',a:'贵州省赛中学组 · 铜奖',c:'bronze',y:'2024',b:'<p><strong>ICPC</strong>是全球最具影响力的大学生程序设计竞赛，被誉为"程序设计界的奥林匹克"。中学组面向高中生开放。</p><p style="margin-top:12px;">3人团队赛，5小时内解决8~12道算法题，考察编程、协作与抗压能力。</p><p style="margin-top:16px;">🔗 <a href="https://icpc.global" target="_blank">icpc.global</a> ｜ <a href="https://icpc.pku.edu.cn" target="_blank">icpc.pku.edu.cn</a></p>'},
+CSP:{t:'CSP 非专业级软件能力认证',a:'初赛二等奖 / 三等奖',c:'silver',y:'2025',b:'<p>中国计算机学会（CCF）主办，NOI体系重要入口。<strong>初赛</strong>为笔试，考察计算机基础与算法理论。</p><p style="margin-top:12px;">🔗 <a href="https://www.noi.cn" target="_blank">noi.cn</a></p>'},
+CSPJ:{t:'CSP-J（入门组）',a:'初赛三等奖 · 复赛二等奖(2024) → 一等奖(2025)',c:'gold',y:'2024 / 2025',b:'<p><strong>CSP-J</strong>面向初中及以下学段。<strong>复赛</strong>现场上机4题限时3.5小时，涵盖模拟、枚举、搜索、贪心、基础DP。</p><p style="margin-top:12px;">2024年复赛<strong style="color:#b0bec5;">二等奖</strong> → 2025年复赛<strong style="color:#ffd700;">一等奖</strong>！</p><p style="margin-top:16px;">🔗 <a href="https://www.noi.cn" target="_blank">noi.cn</a></p>'},
+CSPS:{t:'CSP-S（提高组）',a:'初赛三等奖 · 复赛二等奖(2024&2025)',c:'silver',y:'2024 / 2025',b:'<p><strong>CSP-S</strong>面向高中生，是通向NOIP和NOI的关键一步。<strong>复赛</strong>4题限时4小时。考察高级数据结构、图论、DP优化、字符串算法、数论。</p><p style="margin-top:12px;">2024、2025连续两年复赛<strong style="color:#b0bec5;">二等奖</strong>。</p><p style="margin-top:16px;">🔗 <a href="https://www.noi.cn" target="_blank">noi.cn</a></p>'},
+AI:{t:'全国青少年人工智能大赛',a:'省级选拔赛一等奖',c:'gold',y:'2026',b:'<p>中国福利会、中国妇女发展基金会主办，2026年首届，教育部白名单赛事。5大赛道：基础知识、工具应用、驱动科学、具身智能、大语言模型应用。</p><p style="margin-top:12px;">2026年省级选拔赛<strong style="color:#ffd700;">一等奖</strong>。</p><p style="margin-top:16px;">🔗 <a href="https://aic.cwicp.cn" target="_blank">aic.cwicp.cn</a></p>'},
+INFO:{t:'贵州省师生信息素养比赛',a:'市级二等奖 ×2',c:'silver',y:'2024 / 2026',b:'<p>教育主管部门主办，考察数字创作、程序设计、创客项目、AI应用等综合信息技术能力。2024年<strong style="color:#b0bec5;">贵阳市二等奖</strong>，2026年再次获<strong style="color:#b0bec5;">市级二等奖</strong>。</p><p style="margin-top:16px;">🔗 <a href="https://jyj.guiyang.gov.cn" target="_blank">贵阳市教育局</a></p>'}
+};
+function toggleAcc(h){var b=h.nextElementSibling,o=b.classList.contains('expanded');document.querySelectorAll('.acc-body.expanded').forEach(function(x){x.classList.remove('expanded')});document.querySelectorAll('.acc-header.open').forEach(function(x){x.classList.remove('open')});if(!o){b.classList.add('expanded');h.classList.add('open')}}
+function openMod(k){var d=M[k];document.getElementById('mtag').textContent=d.y;document.getElementById('mtitle').innerHTML=d.t+' · <span class="'+d.c+'">'+d.a+'</span>';document.getElementById('mbody').innerHTML=d.b;document.getElementById('mo').classList.add('active');document.body.style.overflow='hidden'}
+function closeMod(e){if(e&&e.target!==document.getElementById('mo'))return;document.getElementById('mo').classList.remove('active');document.body.style.overflow=''}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.getElementById('mo').classList.remove('active');document.body.style.overflow=''}});
+</script>
+</body>
+</html>
