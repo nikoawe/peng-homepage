@@ -15,7 +15,7 @@
         }
         a { color: inherit; text-decoration: none; }
 
-        /* Nav */
+        /* ===== Nav ===== */
         .nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
             padding: 14px 28px;
@@ -25,10 +25,10 @@
         .nav.scrolled { background: rgba(10,10,18,.94); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(255,255,255,.04); }
         .nav .logo { font-size: 1.1rem; font-weight: 800; color: #00e676; letter-spacing: 2px; }
         .nav-links { display: flex; gap: 22px; list-style: none; }
-        .nav-links a { color: #888; font-size: .84rem; letter-spacing: 1px; transition: .3s; }
+        .nav-links a { color: #888; font-size: .84rem; letter-spacing: 1px; transition: .3s; cursor: pointer; }
         .nav-links a:hover { color: #00e676; }
 
-        /* Hero */
+        /* ===== Hero ===== */
         .hero {
             min-height: 100vh;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -36,91 +36,155 @@
             background: radial-gradient(ellipse at center, rgba(0,230,118,.05) 0%, transparent 70%);
         }
         .hero .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border: 1px solid rgba(0,230,118,.3);
-            border-radius: 20px;
-            font-size: .78rem;
-            color: #00e676;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+            padding: 6px 16px; border: 1px solid rgba(0,230,118,.3); border-radius: 20px;
+            font-size: .78rem; color: #00e676; letter-spacing: 2px; margin-bottom: 20px;
         }
         .hero h1 {
             font-size: 3.2rem; font-weight: 900; letter-spacing: 4px;
             background: linear-gradient(135deg, #fff 30%, #00e676);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             margin-bottom: 8px;
         }
         .hero .sub { font-size: 1.05rem; color: #666; letter-spacing: 2px; margin-bottom: 28px; }
         .hero .tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
         .hero .tags span {
-            padding: 5px 14px;
-            background: rgba(255,255,255,.03);
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 16px;
-            font-size: .78rem;
-            color: #999;
+            padding: 5px 14px; background: rgba(255,255,255,.03);
+            border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
+            font-size: .78rem; color: #999;
         }
-        .hero .arrow { position: absolute; bottom: 50px; color: #444; animation: bounce 2s infinite; }
+        .hero .arrow { position: absolute; bottom: 50px; color: #444; animation: bounce 2s infinite; cursor: pointer; }
         @keyframes bounce { 0%,100% { transform: translateY(0); opacity: .3; } 50% { transform: translateY(8px); opacity: 1; } }
 
-        /* Sections */
+        /* ===== Sections ===== */
         .section { max-width: 860px; margin: 0 auto; padding: 80px 20px; }
-        .sec-tag { font-size: .72rem; text-transform: uppercase; letter-spacing: 4px; color: #00e676; margin-bottom: 6px; }
+        .sec-tag { font-size: .72rem; letter-spacing: 4px; color: #00e676; margin-bottom: 6px; }
         .sec-title { font-size: 1.7rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 6px; color: #fff; }
         .sec-sub { font-size: .88rem; color: #555; margin-bottom: 30px; }
-        .sec-text { color: #aaa; font-size: .96rem; line-height: 2; }
 
-        /* Awards Table */
-        .award-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-        .award-table th {
-            text-align: left; padding: 10px 14px;
-            background: rgba(0,230,118,.06);
-            color: #00e676;
-            font-size: .8rem; letter-spacing: 2px;
+        /* ===== Accordion ===== */
+        .accordion { margin-top: 12px; }
+        .acc-header {
+            width: 100%; display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; background: rgba(255,255,255,.02);
+            border: 1px solid rgba(255,255,255,.05); border-radius: 12px;
+            cursor: pointer; font-size: 1rem; color: #ccc; letter-spacing: 1px;
+            transition: all .3s; text-align: left;
+            font-family: inherit;
+        }
+        .acc-header:hover {
+            background: rgba(0,230,118,.04);
+            border-color: rgba(0,230,118,.15);
+        }
+        .acc-header .icon { margin-right: 10px; font-size: 1.2rem; }
+        .acc-header .arrow-icon {
+            transition: transform .35s;
+            font-size: .8rem; color: #555;
+        }
+        .acc-header.open .arrow-icon { transform: rotate(180deg); color: #00e676; }
+        .acc-header.open {
+            border-color: rgba(0,230,118,.2);
+            background: rgba(0,230,118,.03);
+            border-radius: 12px 12px 0 0;
+        }
+        .acc-body {
+            max-height: 0; overflow: hidden;
+            transition: max-height .5s ease, padding .3s;
+            background: rgba(255,255,255,.01);
+            border: 1px solid transparent; border-top: none;
+            border-radius: 0 0 12px 12px;
+        }
+        .acc-body.expanded {
+            max-height: 1200px;
+            border-color: rgba(0,230,118,.1);
+            padding: 16px 20px;
+        }
+        .acc-body table { width: 100%; border-collapse: collapse; }
+        .acc-body th {
+            text-align: left; padding: 8px 10px;
+            color: #00e676; font-size: .78rem; letter-spacing: 1px;
             border-bottom: 1px solid rgba(255,255,255,.06);
         }
-        .award-table td {
-            padding: 10px 14px;
-            font-size: .9rem; color: #bbb;
-            border-bottom: 1px solid rgba(255,255,255,.03);
+        .acc-body td {
+            padding: 8px 10px; font-size: .88rem; color: #bbb;
+            border-bottom: 1px solid rgba(255,255,255,.02);
         }
-        .award-table tr:hover td { background: rgba(255,255,255,.015); }
-        .award-table .gold { color: #ffd700; }
-        .award-table .silver { color: #b0bec5; }
-        .award-table .bronze { color: #ff8a65; }
+        .acc-body tr:hover td { background: rgba(255,255,255,.01); }
+        .gold { color: #ffd700 !important; font-weight: 600; }
+        .silver { color: #b0bec5 !important; font-weight: 600; }
+        .bronze { color: #ff8a65 !important; font-weight: 600; }
 
-        /* Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
-        .card {
-            background: rgba(255,255,255,.02);
-            border: 1px solid rgba(255,255,255,.05);
-            border-radius: 14px; padding: 22px 18px;
-            transition: all .35s; text-align: center;
+        /* ===== Expandable Cards ===== */
+        .exp-card {
+            background: rgba(255,255,255,.015);
+            border: 1px solid rgba(255,255,255,.04);
+            border-radius: 14px; padding: 20px 22px;
+            cursor: pointer; transition: all .35s;
+            position: relative; overflow: hidden;
         }
-        .card:hover {
-            background: rgba(0,230,118,.04);
-            border-color: rgba(0,230,118,.18);
+        .exp-card:hover {
+            background: rgba(0,230,118,.03);
+            border-color: rgba(0,230,118,.15);
             transform: translateY(-3px);
         }
-        .card .icon { font-size: 2.2rem; margin-bottom: 10px; }
-        .card h4 { font-size: .95rem; margin-bottom: 6px; color: #eee; }
-        .card p { font-size: .8rem; color: #777; }
-
-        /* Timeline */
-        .tl { border-left: 1px solid rgba(255,255,255,.08); padding-left: 26px; margin-left: 8px; }
-        .tl-item { position: relative; margin-bottom: 22px; }
-        .tl-item::before {
-            content: ""; position: absolute; left: -30px; top: 6px;
-            width: 8px; height: 8px; background: #00e676; border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0,230,118,.5);
+        .exp-card .card-top { display: flex; align-items: center; gap: 14px; }
+        .exp-card .card-icon { font-size: 2rem; flex-shrink: 0; }
+        .exp-card .card-info { flex: 1; }
+        .exp-card .card-info h4 { font-size: 1rem; color: #eee; margin-bottom: 2px; }
+        .exp-card .card-info .hint { font-size: .75rem; color: #555; }
+        .exp-card .card-expand {
+            max-height: 0; overflow: hidden;
+            transition: max-height .45s ease, margin .35s, opacity .35s;
+            opacity: 0; margin-top: 0;
+            font-size: .85rem; color: #999; line-height: 1.9;
         }
-        .tl-item .yr { font-size: .75rem; color: #00e676; letter-spacing: 2px; font-weight: 700; }
-        .tl-item h4 { font-size: .95rem; margin: 2px 0 4px; }
-        .tl-item p { font-size: .82rem; color: #888; }
+        .exp-card .card-expand.show {
+            max-height: 400px; opacity: 1; margin-top: 14px;
+        }
+        .exp-card .card-more {
+            font-size: .75rem; color: #00e676; margin-top: 8px;
+            transition: opacity .3s;
+        }
 
-        /* Contact */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 16px; }
+
+        /* ===== Modal ===== */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,.75); z-index: 999;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity .3s;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal {
+            background: #151520; border: 1px solid rgba(255,255,255,.08);
+            border-radius: 18px; padding: 32px 28px; max-width: 600px; width: 90%;
+            max-height: 80vh; overflow-y: auto;
+            transform: translateY(20px); transition: transform .35s;
+        }
+        .modal-overlay.active .modal { transform: translateY(0); }
+        .modal h3 { font-size: 1.4rem; color: #fff; margin-bottom: 6px; }
+        .modal .m-tag { font-size: .78rem; color: #00e676; letter-spacing: 2px; }
+        .modal .m-body { margin-top: 18px; color: #bbb; font-size: .92rem; line-height: 2; }
+        .modal .close-btn {
+            float: right; background: none; border: 1px solid rgba(255,255,255,.15);
+            color: #aaa; width: 36px; height: 36px; border-radius: 50%;
+            cursor: pointer; font-size: 1rem; transition: .3s;
+        }
+        .modal .close-btn:hover { border-color: #00e676; color: #00e676; }
+
+        /* ===== Stat Bar ===== */
+        .stat-bar {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+        }
+        .stat-bar .lbl { width: 100px; font-size: .82rem; color: #aaa; text-align: right; flex-shrink: 0; }
+        .stat-bar .bg { flex: 1; height: 5px; background: rgba(255,255,255,.05); border-radius: 3px; overflow: hidden; }
+        .stat-bar .fill {
+            height: 100%; border-radius: 3px;
+            background: linear-gradient(90deg, #00e676, #00bcd4);
+            transition: width 1.2s ease;
+        }
+
+        /* ===== Contact ===== */
         .contact-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
         .contact-btn {
             display: inline-block; padding: 10px 20px;
@@ -129,7 +193,7 @@
         }
         .contact-btn:hover { border-color: #00e676; color: #00e676; background: rgba(0,230,118,.05); }
 
-        /* Footer */
+        /* ===== Footer ===== */
         .ft { text-align: center; padding: 40px 20px; color: #444; font-size: .76rem; border-top: 1px solid rgba(255,255,255,.03); }
 
         @media (max-width: 600px) {
@@ -167,113 +231,209 @@
         <span>📋 学生会</span>
         <span>🎮 游戏玩家</span>
     </div>
-    <div class="arrow">▼ SCROLL</div>
+    <div class="arrow" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">▼ 了解更多</div>
 </section>
 
 <!-- ===== About ===== -->
 <section class="section" id="about">
     <div class="sec-tag">ABOUT</div>
     <h2 class="sec-title">关于我</h2>
-    <p class="sec-text">
-        我是<strong style="color:#eee;">彭禹诺</strong>，贵阳市第三实验中学学生。
-        一名在代码、运动与书法之间寻找平衡的高中生。
+    <p style="color:#aaa;font-size:.96rem;line-height:2;">
+        我是<strong style="color:#eee;">彭禹诺</strong>，贵阳市第三实验中学学生，在代码、运动与书法之间寻找平衡。
     </p>
-    <p class="sec-text" style="margin-top:14px;">
-        从小学获得<strong style="color:#ffd700;">汉字书法大赛一等奖</strong>开始，到中学征战<strong style="color:#00e676;">信息学奥林匹克竞赛（CSP-J/S）</strong>和<strong style="color:#ff8a65;">ICPC 贵州省赛</strong>，
-        再到<strong style="color:#00bcd4;">青少年人工智能大赛</strong>和<strong style="color:#eee;">信息素养比赛</strong>——
-        一路走来，每一次比赛都是一次成长。
-    </p>
-    <p class="sec-text" style="margin-top:14px;">
-        竞赛之外，我也是<strong style="color:#00e676;">校学生自主管理委员会秘书长兼监督部部长</strong>，
-        2025 年获评<strong style="color:#eee;">优秀学生干部</strong>。
-        喜欢打乒乓球，曾在<strong style="color:#00bcd4;">贵阳市国球进社区乒乓球联赛 13~16 岁组</strong>中获得<strong style="color:#ffd700;">第一名</strong>。
-        课余时间热爱游戏——Steam、CS、Minecraft 都是我的地盘。
-    </p>
+
+    <!-- 可展开卡片 -->
+    <div class="grid" style="margin-top:28px;">
+        <div class="exp-card" onclick="toggleCard(this)">
+            <div class="card-top">
+                <div class="card-icon">💻</div>
+                <div class="card-info">
+                    <h4>信息学竞赛之路</h4>
+                    <div class="hint">点击展开 ▼</div>
+                </div>
+            </div>
+            <div class="card-expand">
+                从 ICPC 省赛铜奖到 CSP-J/S 双料二等奖，再到 2025 年 CSP 初赛包揽一、二、三等奖——算法竞赛是我高中生活中最浓墨重彩的一笔。C++ 是我的主力语言，数据结构与算法是每天的必修课。
+            </div>
+        </div>
+
+        <div class="exp-card" onclick="toggleCard(this)">
+            <div class="card-top">
+                <div class="card-icon">🏓</div>
+                <div class="card-info">
+                    <h4>乒乓球 · 市级第一</h4>
+                    <div class="hint">点击展开 ▼</div>
+                </div>
+            </div>
+            <div class="card-expand">
+                2023 年，在贵阳市第三届"国球进社区"乒乓球联赛中，获得 13~16 岁组<strong style="color:#ffd700;">第一名</strong>。球台上练出的专注力和反应速度，同样适用于编程赛场。
+            </div>
+        </div>
+
+        <div class="exp-card" onclick="toggleCard(this)">
+            <div class="card-top">
+                <div class="card-icon">✍️</div>
+                <div class="card-info">
+                    <h4>书法 · 从小练就</h4>
+                    <div class="hint">点击展开 ▼</div>
+                </div>
+            </div>
+            <div class="card-expand">
+                小学时期获得<strong style="color:#ffd700;">汉字书法大赛一等奖</strong>。一笔一划间养成的耐心与审美，至今受益——代码写得工整，大概也是书法的功劳 😄。
+            </div>
+        </div>
+
+        <div class="exp-card" onclick="toggleCard(this)">
+            <div class="card-top">
+                <div class="card-icon">🤖</div>
+                <div class="card-info">
+                    <h4>人工智能 & 科创</h4>
+                    <div class="hint">点击展开 ▼</div>
+                </div>
+            </div>
+            <div class="card-expand">
+                青少年人工智能大赛初赛<strong style="color:#ffd700;">一等奖</strong>，2024、2026 年信息素养比赛两次市级<strong style="color:#b0bec5;">二等奖</strong>。Python 是 AI 方向的利器，也是我探索技术世界的另一把钥匙。
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- ===== Awards ===== -->
 <section class="section" id="awards">
     <div class="sec-tag">HONORS & AWARDS</div>
     <h2 class="sec-title">获奖经历</h2>
-    <div class="sec-sub">🏅 每一份荣誉，都是努力的见证</div>
+    <div class="sec-sub">🏅 点击每个分类展开查看详情</div>
 
-    <!-- 信息学竞赛 -->
-    <h4 style="color:#00e676;margin-bottom:10px;margin-top:24px;letter-spacing:1px;">💻 信息学竞赛</h4>
-    <table class="award-table">
-        <thead>
-            <tr><th>年份</th><th>比赛</th><th>获奖</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>2024</td><td>ICPC 贵州省赛 · 中学组</td><td class="bronze">🥉 铜奖</td></tr>
-            <tr><td>2024</td><td>CSP-J 初赛</td><td>三等奖</td></tr>
-            <tr><td>2024</td><td>CSP-S 初赛</td><td>三等奖</td></tr>
-            <tr><td>2024</td><td>CSP-J 复赛</td><td class="silver">🥈 二等奖</td></tr>
-            <tr><td>2024</td><td>CSP-S 复赛</td><td class="silver">🥈 二等奖</td></tr>
-            <tr><td>2025</td><td>CSP 初赛</td><td class="gold">一等奖 / 二等奖 / 三等奖</td></tr>
-        </tbody>
-    </table>
+    <div class="accordion">
+        <!-- 信息学竞赛 -->
+        <button class="acc-header" onclick="toggleAccordion(this)">
+            <span><span class="icon">💻</span> 信息学竞赛</span>
+            <span class="arrow-icon">▼</span>
+        </button>
+        <div class="acc-body">
+            <table>
+                <thead><tr><th>年份</th><th>比赛</th><th>获奖</th><th style="text-align:right;">操作</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>2024</td><td>ICPC 贵州省赛 · 中学组</td>
+                        <td class="bronze">🥉 铜奖</td>
+                        <td style="text-align:right;"><span style="color:#00e676;cursor:pointer;font-size:.78rem;" onclick="event.stopPropagation();openModal('ICPC 贵州省赛','2024','国际大学生程序设计竞赛贵州省赛中学组铜奖。ICPC 是全球最具影响力的大学生编程竞赛，中学组竞争同样激烈，需要在限时内解决多道算法难题。','铜奖','bronze')">查看详情 →</span></td>
+                    </tr>
+                    <tr>
+                        <td>2024</td><td>CSP-J 复赛</td><td class="silver">🥈 二等奖</td>
+                        <td style="text-align:right;"><span style="color:#00e676;cursor:pointer;font-size:.78rem;" onclick="event.stopPropagation();openModal('CSP-J 复赛','2024','CCF 非专业级软件能力认证 Junior 组复赛二等奖。CSP-J 面向初中及以下学生，考察编程基础和算法能力。复赛为上机编程，需在限定时间内完成多道题目。','二等奖','silver')">查看详情 →</span></td>
+                    </tr>
+                    <tr>
+                        <td>2024</td><td>CSP-S 复赛</td><td class="silver">🥈 二等奖</td>
+                        <td style="text-align:right;"><span style="color:#00e676;cursor:pointer;font-size:.78rem;" onclick="event.stopPropagation();openModal('CSP-S 复赛','2024','CCF 非专业级软件能力认证 Senior 组复赛二等奖。CSP-S 面向高中生，难度高于 J 组，是信息学竞赛的重要门槛。复赛二等奖是对算法实力的有力证明。','二等奖','silver')">查看详情 →</span></td>
+                    </tr>
+                    <tr>
+                        <td>2024</td><td>CSP-J 初赛 / CSP-S 初赛</td><td>三等奖 ×2</td>
+                        <td style="text-align:right;"><span style="color:#666;font-size:.78rem;">笔试</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025</td><td>CSP 初赛</td><td class="gold">🥇 一等奖 / 二等奖 / 三等奖</td>
+                        <td style="text-align:right;"><span style="color:#00e676;cursor:pointer;font-size:.78rem;" onclick="event.stopPropagation();openModal('CSP 初赛 2025','2025','2025 年 CSP 初赛全面丰收：包揽一等奖、二等奖、三等奖，实现质的飞跃。从 2024 年的三等奖到 2025 年的一等奖，一年间进步显著。','一等奖','gold')">查看详情 →</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <!-- AI & 科创 -->
-    <h4 style="color:#00bcd4;margin-bottom:10px;margin-top:28px;letter-spacing:1px;">🤖 人工智能 & 信息素养</h4>
-    <table class="award-table">
-        <thead>
-            <tr><th>年份</th><th>比赛</th><th>获奖</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>—</td><td>青少年人工智能大赛 · 初赛</td><td class="gold">🥇 一等奖</td></tr>
-            <tr><td>2024</td><td>贵州省师生信息素养比赛 · 贵阳市</td><td class="silver">🥈 二等奖</td></tr>
-            <tr><td>2026</td><td>信息素养比赛 · 市级</td><td class="silver">🥈 二等奖</td></tr>
-        </tbody>
-    </table>
+        <!-- AI & 信息素养 -->
+        <button class="acc-header" onclick="toggleAccordion(this)" style="margin-top:8px;">
+            <span><span class="icon">🤖</span> 人工智能 & 信息素养</span>
+            <span class="arrow-icon">▼</span>
+        </button>
+        <div class="acc-body">
+            <table>
+                <thead><tr><th>年份</th><th>比赛</th><th>获奖</th></tr></thead>
+                <tbody>
+                    <tr><td>—</td><td>青少年人工智能大赛 · 初赛</td><td class="gold">🥇 一等奖</td></tr>
+                    <tr><td>2024</td><td>贵州省师生信息素养比赛 · 贵阳市</td><td class="silver">🥈 二等奖</td></tr>
+                    <tr><td>2026</td><td>信息素养比赛 · 市级</td><td class="silver">🥈 二等奖</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-    <!-- 综合 -->
-    <h4 style="color:#ffd700;margin-bottom:10px;margin-top:28px;letter-spacing:1px;">🌟 其他荣誉</h4>
-    <table class="award-table">
-        <thead>
-            <tr><th>年份</th><th>荣誉</th><th>级别</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>小学</td><td>汉字书法大赛</td><td class="gold">🥇 一等奖</td></tr>
-            <tr><td>2023</td><td>贵阳市第三届国球进社区乒乓球联赛（13~16 岁组）</td><td class="gold">🥇 第一名</td></tr>
-            <tr><td>2025</td><td>优秀学生干部</td><td>校级</td></tr>
-        </tbody>
-    </table>
+        <!-- 其他荣誉 -->
+        <button class="acc-header" onclick="toggleAccordion(this)" style="margin-top:8px;">
+            <span><span class="icon">🌟</span> 综合荣誉</span>
+            <span class="arrow-icon">▼</span>
+        </button>
+        <div class="acc-body">
+            <table>
+                <thead><tr><th>年份</th><th>荣誉</th><th>获奖</th></tr></thead>
+                <tbody>
+                    <tr><td>小学</td><td>汉字书法大赛</td><td class="gold">🥇 一等奖</td></tr>
+                    <tr><td>2023</td><td>贵阳市第三届国球进社区乒乓球联赛（13~16 岁组）</td><td class="gold">🥇 第一名</td></tr>
+                    <tr><td>2025</td><td>优秀学生干部</td><td>校级</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
 
 <!-- ===== Skills ===== -->
 <section class="section" id="skills">
     <div class="sec-tag">SKILLS</div>
-    <h2 class="sec-title">技能 & 特长</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="icon">💻</div>
-            <h4>C++ / 算法</h4>
-            <p>CSP-J/S 竞赛训练，数据结构与算法基础扎实。</p>
+    <h2 class="sec-title">能力雷达</h2>
+
+    <div class="stat-bar"><span class="lbl">C++ / 算法</span><div class="bg"><div class="fill" style="width:0%" data-w="82%"></div></div></div>
+    <div class="stat-bar"><span class="lbl">Python</span><div class="bg"><div class="fill" style="width:0%" data-w="65%"></div></div></div>
+    <div class="stat-bar"><span class="lbl">数据结构</span><div class="bg"><div class="fill" style="width:0%" data-w="78%"></div></div></div>
+    <div class="stat-bar"><span class="lbl">Web 前端</span><div class="bg"><div class="fill" style="width:0%" data-w="55%"></div></div></div>
+    <div class="stat-bar"><span class="lbl">乒乓球</span><div class="bg"><div class="fill" style="width:0%" data-w="88%"></div></div></div>
+    <div class="stat-bar"><span class="lbl">书法</span><div class="bg"><div class="fill" style="width:0%" data-w="80%"></div></div></div>
+    <div class="stat-bar"><span class="lbl">组织管理</span><div class="bg"><div class="fill" style="width:0%" data-w="75%"></div></div></div>
+
+    <div class="grid" style="margin-top:32px;">
+        <div class="exp-card" onclick="toggleCard(this)">
+            <div class="card-top">
+                <div class="card-icon">💻</div>
+                <div class="card-info">
+                    <h4>C++ / 算法竞赛</h4>
+                    <div class="hint">点击展开 ▼</div>
+                </div>
+            </div>
+            <div class="card-expand">
+                信息学竞赛的核心技能。熟练运用 STL，掌握动态规划、贪心、搜索、图论等经典算法。CSP-S 复赛二等奖是最好的实力证明。
+            </div>
         </div>
-        <div class="card">
-            <div class="icon">🐍</div>
-            <h4>Python</h4>
-            <p>人工智能大赛主力语言，也用来写工具脚本。</p>
+        <div class="exp-card" onclick="toggleCard(this)">
+            <div class="card-top">
+                <div class="card-icon">🐍</div>
+                <div class="card-info">
+                    <h4>Python</h4>
+                    <div class="hint">点击展开 ▼</div>
+                </div>
+            </div>
+            <div class="card-expand">
+                AI 大赛主力语言，也用于日常工具编写和自动化脚本。熟悉常用库，关注 AI 与机器学习方向。
+            </div>
         </div>
-        <div class="card">
-            <div class="icon">🌐</div>
-            <h4>前端开发</h4>
-            <p>HTML / CSS 入门，能用 Claude Code 辅助做网页。</p>
+        <div class="exp-card" onclick="toggleCard(this)">
+            <div class="card-top">
+                <div class="card-icon">🌐</div>
+                <div class="card-info">
+                    <h4>Web 前端 & Git</h4>
+                    <div class="hint">点击展开 ▼</div>
+                </div>
+            </div>
+            <div class="card-expand">
+                能用 HTML/CSS 做响应式网页（就像你现在看到的），熟练使用 Git + GitHub 进行版本管理和协作，有自己的开源仓库。
+            </div>
         </div>
-        <div class="card">
-            <div class="icon">🏓</div>
-            <h4>乒乓球</h4>
-            <p>市级联赛经验，速度快、反应准。</p>
-        </div>
-        <div class="card">
-            <div class="icon">✍️</div>
-            <h4>书法</h4>
-            <p>小学获市级一等奖，练就一手好字。</p>
-        </div>
-        <div class="card">
-            <div class="icon">📋</div>
-            <h4>组织管理</h4>
-            <p>秘书长 + 监督部部长，善于协调与沟通。</p>
+        <div class="exp-card" onclick="toggleCard(this)">
+            <div class="card-top">
+                <div class="card-icon">🤖</div>
+                <div class="card-info">
+                    <h4>AI 工具应用</h4>
+                    <div class="hint">点击展开 ▼</div>
+                </div>
+            </div>
+            <div class="card-expand">
+                Claude Code + DeepSeek 重度用户，善于用 AI 辅助编程、学习和创作。效率提升的同时也保持自己的思考。
+            </div>
         </div>
     </div>
 </section>
@@ -282,50 +442,23 @@
 <section class="section" id="role">
     <div class="sec-tag">LEADERSHIP</div>
     <h2 class="sec-title">学生工作</h2>
-    <p class="sec-text">
-        担任<strong style="color:#00e676;">校学生自主管理委员会秘书长</strong>兼<strong style="color:#00e676;">监督部部长</strong>，
-        负责统筹学生自治事务，协调各部门工作。2025 年获评<strong style="color:#eee;">"优秀学生干部"</strong>。
-    </p>
-    <p class="sec-text" style="margin-top:14px;">
-        在学生工作中锻炼了沟通协调能力、团队管理能力和责任意识——
-        这些软技能和编程硬实力一样重要。
-    </p>
-</section>
-
-<!-- ===== Timeline ===== -->
-<section class="section" id="timeline">
-    <div class="sec-tag">JOURNEY</div>
-    <h2 class="sec-title">成长之路</h2>
-    <div class="tl">
-        <div class="tl-item">
-            <div class="yr">小学</div>
-            <h4>书法起步</h4>
-            <p>获得汉字书法大赛一等奖，奠定了对"写好字"的追求。</p>
+    <div class="exp-card" onclick="toggleCard(this)" style="margin-top:12px;">
+        <div class="card-top">
+            <div class="card-icon">📋</div>
+            <div class="card-info">
+                <h4>校学生自主管理委员会 · 秘书长兼监督部部长</h4>
+                <div class="hint">点击展开 ▼</div>
+            </div>
         </div>
-        <div class="tl-item">
-            <div class="yr">2021</div>
-            <h4>接触编程</h4>
-            <p>从 Python 入门，打开信息学的大门。</p>
-        </div>
-        <div class="tl-item">
-            <div class="yr">2023</div>
-            <h4>乒乓球 · 市级联赛</h4>
-            <p>参加贵阳市国球进社区乒乓球联赛，在竞技中磨练意志。</p>
-        </div>
-        <div class="tl-item">
-            <div class="yr">2024</div>
-            <h4>信息学竞赛爆发</h4>
-            <p>ICPC 铜奖 + CSP-J/S 双料二等奖，算法能力快速提升。</p>
-        </div>
-        <div class="tl-item">
-            <div class="yr">2025</div>
-            <h4>全面开花</h4>
-            <p>CSP 一等奖、AI 大赛一等奖、优秀学生干部——赛场与校园双丰收。</p>
-        </div>
-        <div class="tl-item">
-            <div class="yr">2026</div>
-            <h4>持续前进</h4>
-            <p>信息素养比赛市级二等奖，同时探索前端与更多技术方向。</p>
+        <div class="card-expand">
+            <p>负责统筹学生自治事务，协调各部门工作，监督各项规章制度的执行。在学生工作中锻炼了：</p>
+            <p style="margin-top:8px;">
+                • <strong style="color:#00e676;">沟通协调</strong> — 在老师与学生之间搭建桥梁<br>
+                • <strong style="color:#00e676;">团队管理</strong> — 带领部门成员高效完成各项任务<br>
+                • <strong style="color:#00e676;">责任意识</strong> — 对每一份工作负责到底<br>
+                • <strong style="color:#00e676;">时间管理</strong> — 在竞赛、学业与工作间找到平衡
+            </p>
+            <p style="margin-top:10px;">2025 年获评<strong style="color:#ffd700;">"优秀学生干部"</strong>，这是对学生工作最好的肯定。</p>
         </div>
     </div>
 </section>
@@ -334,7 +467,7 @@
 <section class="section" id="contact">
     <div class="sec-tag">CONTACT</div>
     <h2 class="sec-title">联系我</h2>
-    <p class="sec-text">欢迎交流算法竞赛、乒乓球切磋、书法探讨 或 随便聊聊 🎯</p>
+    <p style="color:#aaa;font-size:.96rem;">欢迎交流算法竞赛、乒乓球切磋、书法探讨 或 随便聊聊 🎯</p>
     <div class="contact-row">
         <a href="https://github.com/nikoawe" target="_blank" class="contact-btn">💻 GitHub · nikoawe</a>
         <span class="contact-btn">💬 QQ</span>
@@ -349,10 +482,76 @@
     <p style="margin-top:6px;">校训：刚健自强 · 止于至善</p>
 </footer>
 
+<!-- ===== Modal ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closeModal()">✕</button>
+        <div class="m-tag" id="modalTag"></div>
+        <h3 id="modalTitle"></h3>
+        <div class="m-body" id="modalBody"></div>
+    </div>
+</div>
+
 <script>
+    // Nav
     window.addEventListener('scroll', () => {
         document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
     });
+
+    // Accordion
+    function toggleAccordion(header) {
+        const body = header.nextElementSibling;
+        const isOpen = body.classList.contains('expanded');
+        // close all
+        document.querySelectorAll('.acc-body.expanded').forEach(b => b.classList.remove('expanded'));
+        document.querySelectorAll('.acc-header.open').forEach(h => h.classList.remove('open'));
+        if (!isOpen) {
+            body.classList.add('expanded');
+            header.classList.add('open');
+        }
+    }
+
+    // Expandable cards
+    function toggleCard(card) {
+        const expand = card.querySelector('.card-expand');
+        const hint = card.querySelector('.hint');
+        expand.classList.toggle('show');
+        if (expand.classList.contains('show')) {
+            hint.textContent = '点击收起 ▲';
+        } else {
+            hint.textContent = '点击展开 ▼';
+        }
+    }
+
+    // Modal
+    function openModal(title, year, body, award, cls) {
+        document.getElementById('modalTag').textContent = year;
+        document.getElementById('modalTitle').innerHTML = title + ' · <span class="' + cls + '">' + award + '</span>';
+        document.getElementById('modalBody').textContent = body;
+        document.getElementById('modalOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(e) {
+        if (e && e.target !== document.getElementById('modalOverlay')) return;
+        document.getElementById('modalOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') { document.getElementById('modalOverlay').classList.remove('active'); document.body.style.overflow = ''; }
+    });
+
+    // Stat bar animation
+    const fills = document.querySelectorAll('.fill');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(en => {
+            if (en.isIntersecting) {
+                const bar = en.target;
+                bar.style.width = bar.dataset.w;
+                obs.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.3 });
+    fills.forEach(f => obs.observe(f));
 </script>
 </body>
 </html>
